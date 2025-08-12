@@ -10,7 +10,8 @@ namespace windows
         auto  create() -> void override;
         auto destroy() -> void override;
 
-        auto show() const -> void override;
+        auto  handle() const -> std::any override;
+        auto    show() const -> void     override;
 
     private:
         uint32_t _style { WS_CLIPSIBLINGS | WS_CLIPCHILDREN };
