@@ -27,6 +27,8 @@ namespace windows
 
     auto Window::destroy() -> void
     {
+        UnregisterClass(MAKEINTATOM(_id), GetModuleHandle(nullptr));
+
         DestroyWindow(_hwnd);
     }
 
