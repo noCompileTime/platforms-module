@@ -2,14 +2,14 @@
 
 namespace windows
 {
-    auto WindowEvents::init(const std::any& handle) -> void
+    auto WindowEvents::init(const std::unique_ptr<core::base::Window>& window) -> void
     {
-        SetProp(std::any_cast<HWND>(handle), "events", this);
+        SetProp(std::any_cast<HWND>(window->handle()), "events", this);
     }
 
-    auto WindowEvents::release(const std::any& handle) -> void
+    auto WindowEvents::release(const std::unique_ptr<core::base::Window>& window) -> void
     {
-        RemoveProp(std::any_cast<HWND>(handle), "events");
+        RemoveProp(std::any_cast<HWND>(window->handle()), "events");
     }
 
     auto WindowEvents::update() const -> void

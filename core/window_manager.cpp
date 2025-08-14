@@ -12,12 +12,12 @@ namespace core
         _window->create();
 
         _window_events = factory->create_window_events();
-        _window_events->init(_window->handle());
+        _window_events->init(_window);
     }
 
     auto WindowManager::release() const -> void
     {
-        _window_events->release(_window->handle());
+        _window_events->release(_window);
 
         _window->destroy();
     }

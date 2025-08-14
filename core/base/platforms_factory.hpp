@@ -1,6 +1,5 @@
 #pragma once
 
-#include "window.hpp"
 #include "window_events.hpp"
 
 namespace core::base
