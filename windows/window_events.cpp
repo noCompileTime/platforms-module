@@ -12,7 +12,7 @@ namespace windows
         RemoveProp(std::any_cast<HWND>(handle), "events");
     }
 
-    auto WindowEvents::update() -> void
+    auto WindowEvents::update() const -> void
     {
         MSG msg;
 

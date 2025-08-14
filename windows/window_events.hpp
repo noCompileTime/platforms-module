@@ -9,7 +9,7 @@ namespace windows
     public:
         auto    init(const std::any& handle) -> void override;
         auto release(const std::any& handle) -> void override;
-        auto update()                        -> void override;
+        auto update()                  const -> void override;
 
         static auto update(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) -> LRESULT;
     };
