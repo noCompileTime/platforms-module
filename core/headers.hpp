@@ -2,4 +2,6 @@
 
 #include <any>
 
+#include <memory>
+
 #include <functional>
