@@ -32,15 +32,31 @@ namespace windows
     {
         switch (msg)
         {
+            case WM_CREATE:
+            {
+                SetThreadExecutionState(ES_DISPLAY_REQUIRED | ES_CONTINUOUS);
+
+                break;
+            }
+            case WM_DESTROY:
+            {
+                SetThreadExecutionState(ES_CONTINUOUS);
+
+                break;
+            }
             case WM_CLOSE:
             {
-                if (const auto window_events = static_cast<WindowEvents*>(GetProp(hwnd, "events"));
-                               window_events->on_close)
+                if (const auto window_events  = static_cast<WindowEvents*>(GetProp(hwnd, "events"));
+                               window_events && window_events->on_close)
                 {
                     window_events->on_close();
                 }
 
                 return 0;
+            }
+            case WM_ERASEBKGND:
+            {
+                return 1;
             }
             default:
                 break;
