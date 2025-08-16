@@ -11,6 +11,6 @@ namespace core::base
         virtual auto  handle() const -> std::any = 0;
         virtual auto    show() const -> void     = 0;
 
-        virtual ~Window() = default;
+        virtual      ~Window() = default;
     };
 }
