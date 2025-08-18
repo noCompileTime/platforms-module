@@ -5,31 +5,18 @@ namespace windows
 {
     auto Window::create() -> void
     {
+        register_class();
+
         _style |= WS_OVERLAPPEDWINDOW;
 
-        const auto instance = GetModuleHandle(nullptr);
-
-        const WNDCLASSEX classex
-        {
-            .cbSize        = sizeof(WNDCLASSEX),
-            .style         = CS_HREDRAW | CS_VREDRAW | CS_OWNDC,
-            .lpfnWndProc   = WindowEvents::update,
-            .hInstance     = instance,
-            .hIcon         = LoadIcon  (nullptr, IDI_APPLICATION),
-            .hCursor       = LoadCursor(nullptr, IDC_ARROW),
-            .lpszClassName = "window"
-        };
-
-        _id = RegisterClassEx(&classex);
-
-        _hwnd = CreateWindowEx(_extra, MAKEINTATOM(_id), "Platforms Framework", _style, CW_USEDEFAULT, CW_USEDEFAULT, 640, 480, nullptr, nullptr, instance, nullptr);
+        _hwnd = CreateWindowEx(_extra, MAKEINTATOM(_id), "Platforms Framework", _style, CW_USEDEFAULT, CW_USEDEFAULT, 640, 480, nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
     }
 
     auto Window::destroy() -> void
     {
-        UnregisterClass(MAKEINTATOM(_id), GetModuleHandle(nullptr));
-
         DestroyWindow(_hwnd);
+
+        unregister_class();
     }
 
     auto Window::handle() const -> std::any
@@ -40,5 +27,26 @@ namespace windows
     auto Window::show() const -> void
     {
         ShowWindow(_hwnd, SW_SHOW);
+    }
+
+    auto Window::register_class() -> void
+    {
+        const WNDCLASSEX classex
+        {
+            .cbSize        = sizeof(WNDCLASSEX),
+            .style         = CS_HREDRAW | CS_VREDRAW | CS_OWNDC,
+            .lpfnWndProc   = WindowEvents::update,
+            .hInstance     = GetModuleHandle(nullptr),
+            .hIcon         = LoadIcon       (nullptr, IDI_APPLICATION),
+            .hCursor       = LoadCursor     (nullptr, IDC_ARROW),
+            .lpszClassName = "window"
+        };
+
+        _id = RegisterClassEx(&classex);
+    }
+
+    auto Window::unregister_class() const -> void
+    {
+        UnregisterClass(MAKEINTATOM(_id), GetModuleHandle(nullptr));
     }
 }

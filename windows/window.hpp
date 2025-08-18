@@ -14,6 +14,9 @@ namespace windows
         auto    show() const -> void     override;
 
     private:
+        auto   register_class()       -> void;
+        auto unregister_class() const -> void;
+
         uint32_t _style { WS_CLIPSIBLINGS | WS_CLIPCHILDREN };
         uint32_t _extra { WS_EX_APPWINDOW };
 
