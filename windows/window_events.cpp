@@ -47,9 +47,9 @@ namespace windows
             case WM_CLOSE:
             {
                 if (const auto window_events = static_cast<WindowEvents*>(GetProp(hwnd, "events"));
-                               window_events && window_events->on_close)
+                               window_events && window_events->callbacks.close)
                 {
-                    window_events->on_close();
+                    window_events->callbacks.close();
                 }
 
                 return 0;

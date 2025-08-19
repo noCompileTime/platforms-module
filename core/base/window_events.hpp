@@ -1,6 +1,7 @@
 #pragma once
 
 #include "window.hpp"
+#include "window_events_callbacks.hpp"
 
 namespace core::base
 {
@@ -13,6 +14,6 @@ namespace core::base
 
         virtual ~WindowEvents() = default;
 
-        std::function<void()> on_close { };
+        window_events_callbacks callbacks;
     };
 }
