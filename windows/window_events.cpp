@@ -1,5 +1,4 @@
 #include "window_events.hpp"
-
 #include "window_input.hpp"
 
 namespace windows
@@ -79,19 +78,18 @@ namespace windows
             case WM_LBUTTONUP:
             case WM_MBUTTONUP:
             case WM_RBUTTONUP:
-            {   // TODO maybe try to add a static function around here? because seems like very duplicate code
-                if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
-                               window_input && window_input->callbacks.mouse_press)
-                {
-                    const auto button = msg == WM_LBUTTONUP ? VK_LBUTTON :
-                                        msg == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
+            {
+                process_mouse_message(hwnd, msg, false);
 
-                    if (const auto it  = window_input->codes.find(button);
-                                   it != window_input->codes.end())
-                    {
-                        window_input->callbacks.mouse_press(it->second, false);
-                    }
-                }
+                break;
+            }
+            case WM_LBUTTONDOWN:
+            case WM_MBUTTONDOWN:
+            case WM_RBUTTONDOWN:
+            {
+                process_mouse_message(hwnd, msg, true);
+
+                break;
             }
             case WM_ERASEBKGND:
             {
@@ -102,5 +100,21 @@ namespace windows
         }
 
         return DefWindowProc(hwnd, msg, wparam, lparam);
+    }
+
+    auto WindowEvents::process_mouse_message(const HWND hwnd, const UINT msg, const bool state) -> void
+    {
+        if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
+                       window_input && window_input->callbacks.mouse_press)
+        {
+            const auto button = msg == WM_LBUTTONUP ? VK_LBUTTON :
+                                msg == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
+
+            if (const auto it  = window_input->codes.find(button);
+                           it != window_input->codes.end())
+            {
+                window_input->callbacks.mouse_press(it->second, state);
+            }
+        }
     }
 }

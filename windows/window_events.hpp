@@ -12,5 +12,8 @@ namespace windows
         auto  update()                                            const -> void override;
 
         static auto update(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) -> LRESULT;
+
+    private:
+        static auto process_mouse_message(HWND hwnd, UINT msg, bool state) -> void;
     };
 }
