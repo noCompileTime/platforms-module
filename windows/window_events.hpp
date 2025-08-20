@@ -12,9 +12,10 @@ namespace windows
         auto release(const std::unique_ptr<core::base::Window>& window) -> void override;
         auto  update()                                            const -> void override;
 
-        static auto update(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) -> LRESULT;
+        static auto update(HWND hwnd, uint32_t msg, uintptr_t wparam, intptr_t lparam) -> intptr_t;
 
     private:
-        static auto process_button_message(HWND hwnd, UINT msg, core::input::state state) -> void;
+        static auto process_button_message(HWND hwnd, uint32_t  code, core::input::state state) -> void;
+        static auto process_key_message   (HWND hwnd, uintptr_t code,       intptr_t key_state) -> void;
     };
 }

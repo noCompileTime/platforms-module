@@ -29,7 +29,7 @@ namespace windows
         }
     }
 
-    auto WindowEvents::update(const HWND hwnd, const UINT msg, const WPARAM wparam, const LPARAM lparam) -> LRESULT
+    auto WindowEvents::update(const HWND hwnd, const uint32_t msg, const uintptr_t wparam, const intptr_t lparam) -> intptr_t
     {
         switch (msg)
         {
@@ -55,23 +55,11 @@ namespace windows
 
                 return 0;
             }
-            case WM_KEYUP:
-            case WM_KEYDOWN:
-            case WM_SYSKEYUP:
-            case WM_SYSKEYDOWN:
+            case WM_LBUTTONDOWN:
+            case WM_MBUTTONDOWN:
+            case WM_RBUTTONDOWN:
             {
-                if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
-                               window_input && window_input->callbacks.key_press)
-                {
-                    const auto   key = wparam;
-                    const auto state = HIWORD(lparam) & KF_UP ? core::input::pressed : core::input::released;
-
-                    if (const auto it  = window_input->codes.find(key);
-                                   it != window_input->codes.end())
-                    {
-                        window_input->callbacks.key_press(it->second, state);
-                    }
-                }
+                process_button_message(hwnd, msg, core::input::pressed);
 
                 break;
             }
@@ -83,11 +71,13 @@ namespace windows
 
                 break;
             }
-            case WM_LBUTTONDOWN:
-            case WM_MBUTTONDOWN:
-            case WM_RBUTTONDOWN:
+            case WM_KEYUP:
+            case WM_KEYDOWN:
+
+            case WM_SYSKEYUP:
+            case WM_SYSKEYDOWN:
             {
-                process_button_message(hwnd, msg, core::input::pressed);
+                process_key_message(hwnd, wparam, lparam);
 
                 break;
             }
@@ -102,18 +92,33 @@ namespace windows
         return DefWindowProc(hwnd, msg, wparam, lparam);
     }
 
-    auto WindowEvents::process_button_message(const HWND hwnd, const UINT msg, const core::input::state state) -> void
+    auto WindowEvents::process_button_message(const HWND hwnd, const uint32_t code, const core::input::state state) -> void
     {
         if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
                        window_input && window_input->callbacks.button_press)
         {
-            const auto button = msg == WM_LBUTTONUP ? VK_LBUTTON :
-                                msg == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
+            const auto button  = code == WM_LBUTTONUP ? VK_LBUTTON :
+                                 code == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
 
             if (const auto it  = window_input->codes.find(button);
                            it != window_input->codes.end())
             {
                 window_input->callbacks.button_press(it->second, state);
+            }
+        }
+    }
+
+    auto WindowEvents::process_key_message(const HWND hwnd, const uintptr_t code, const intptr_t key_state) -> void
+    {
+        if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
+                       window_input && window_input->callbacks.key_press)
+        {
+            const auto state = HIWORD(key_state) & KF_UP ? core::input::pressed : core::input::released;
+
+            if (const auto it  = window_input->codes.find(code);
+                           it != window_input->codes.end())
+            {
+                window_input->callbacks.key_press(it->second, state);
             }
         }
     }
