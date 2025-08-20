@@ -1,6 +1,8 @@
 #include "window_events.hpp"
 #include "window_input.hpp"
 
+#include "window_input.hpp"
+
 namespace windows
 {
     auto WindowEvents::init(const core::base::window_ptr& window) -> void
@@ -129,6 +131,43 @@ namespace windows
                 }
 
                 return 0;
+            }
+            case WM_KEYUP:
+            case WM_KEYDOWN:
+            case WM_SYSKEYUP:
+            case WM_SYSKEYDOWN:
+            {
+                if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
+                               window_input && window_input->callbacks.key_press)
+                {
+                    const auto state = (HIWORD(lparam) & KF_UP) == 0;
+                    const auto   key =         wparam;
+
+                    if (const auto it  = window_input->codes.find(key);
+                                   it != window_input->codes.end())
+                    {
+                        window_input->callbacks.key_press(it->second, state);
+                    }
+                }
+
+                break;
+            }
+            case WM_LBUTTONUP:
+            case WM_MBUTTONUP:
+            case WM_RBUTTONUP:
+            {   // TODO maybe try to add a static function around here? because seems like very duplicate code
+                if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
+                               window_input && window_input->callbacks.mouse_press)
+                {
+                    const auto button = msg == WM_LBUTTONUP ? VK_LBUTTON :
+                                        msg == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
+
+                    if (const auto it  = window_input->codes.find(button);
+                                   it != window_input->codes.end())
+                    {
+                        window_input->callbacks.mouse_press(it->second, false);
+                    }
+                }
             }
             case WM_ERASEBKGND:
             {
