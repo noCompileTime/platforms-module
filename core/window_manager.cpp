@@ -13,6 +13,9 @@ namespace core
 
         _window_events = factory->create_window_events();
         _window_events->init(_window);
+
+        _window_input = factory->create_window_input();
+        _window_input->init(_window);
     }
 
     auto WindowManager::release() const -> void
@@ -30,5 +33,10 @@ namespace core
     auto WindowManager::window_events() const -> base::WindowEvents&
     {
         return *_window_events;
+    }
+
+    auto WindowManager::window_input() const -> base::WindowInput&
+    {
+        return *_window_input;
     }
 }

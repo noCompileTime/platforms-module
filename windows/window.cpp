@@ -5,7 +5,7 @@ namespace windows
 {
     auto Window::create() -> void
     {
-        register_class();
+         register_class();
 
         _style |= WS_OVERLAPPEDWINDOW;
 
