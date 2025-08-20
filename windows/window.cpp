@@ -35,7 +35,7 @@ namespace windows
         {
             .cbSize        = sizeof(WNDCLASSEX),
             .style         = CS_HREDRAW | CS_VREDRAW | CS_OWNDC,
-            .lpfnWndProc   = WindowEvents::update,
+            .lpfnWndProc   = WindowEvents::process_message,
             .hInstance     = GetModuleHandle(nullptr),
             .hIcon         = LoadIcon       (nullptr, IDI_APPLICATION),
             .hCursor       = LoadCursor     (nullptr, IDC_ARROW),

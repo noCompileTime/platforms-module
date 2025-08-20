@@ -29,7 +29,7 @@ namespace windows
         }
     }
 
-    auto WindowEvents::update(const HWND hwnd, const uint32_t msg, const uintptr_t wparam, const intptr_t lparam) -> intptr_t
+    auto WindowEvents::process_message(const HWND hwnd, const uint32_t msg, const uintptr_t wparam, const intptr_t lparam) -> intptr_t
     {
         switch (msg)
         {
