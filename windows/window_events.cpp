@@ -69,7 +69,7 @@ namespace windows
                     if (const auto it  = window_input->codes.find(key);
                                    it != window_input->codes.end())
                     {
-                        window_input->callbacks.key_press(it->second, state);
+                        window_input->callbacks.key_press(it->second, static_cast<core::input::state>(state));
                     }
                 }
 
@@ -102,7 +102,7 @@ namespace windows
         return DefWindowProc(hwnd, msg, wparam, lparam);
     }
 
-    auto WindowEvents::process_button_message(const HWND hwnd, const UINT msg, const bool state) -> void
+    auto WindowEvents::process_button_message(const HWND hwnd, const UINT msg, const core::input::state state) -> void
     {
         if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
                        window_input && window_input->callbacks.button_press)
