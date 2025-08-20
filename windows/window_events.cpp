@@ -79,7 +79,7 @@ namespace windows
             case WM_MBUTTONUP:
             case WM_RBUTTONUP:
             {
-                process_mouse_message(hwnd, msg, false);
+                process_button_message(hwnd, msg, false);
 
                 break;
             }
@@ -87,7 +87,7 @@ namespace windows
             case WM_MBUTTONDOWN:
             case WM_RBUTTONDOWN:
             {
-                process_mouse_message(hwnd, msg, true);
+                process_button_message(hwnd, msg, true);
 
                 break;
             }
@@ -102,10 +102,10 @@ namespace windows
         return DefWindowProc(hwnd, msg, wparam, lparam);
     }
 
-    auto WindowEvents::process_mouse_message(const HWND hwnd, const UINT msg, const bool state) -> void
+    auto WindowEvents::process_button_message(const HWND hwnd, const UINT msg, const bool state) -> void
     {
         if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
-                       window_input && window_input->callbacks.mouse_press)
+                       window_input && window_input->callbacks.button_press)
         {
             const auto button = msg == WM_LBUTTONUP ? VK_LBUTTON :
                                 msg == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
@@ -113,7 +113,7 @@ namespace windows
             if (const auto it  = window_input->codes.find(button);
                            it != window_input->codes.end())
             {
-                window_input->callbacks.mouse_press(it->second, state);
+                window_input->callbacks.button_press(it->second, state);
             }
         }
     }
