@@ -63,13 +63,13 @@ namespace windows
                 if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
                                window_input && window_input->callbacks.key_press)
                 {
-                    const auto state = (HIWORD(lparam) & KF_UP) == 0;
-                    const auto   key =         wparam;
+                    const auto   key = wparam;
+                    const auto state = HIWORD(lparam) & KF_UP ? core::input::pressed : core::input::released;
 
                     if (const auto it  = window_input->codes.find(key);
                                    it != window_input->codes.end())
                     {
-                        window_input->callbacks.key_press(it->second, static_cast<core::input::state>(state));
+                        window_input->callbacks.key_press(it->second, state);
                     }
                 }
 
@@ -79,7 +79,7 @@ namespace windows
             case WM_MBUTTONUP:
             case WM_RBUTTONUP:
             {
-                process_button_message(hwnd, msg, false);
+                process_button_message(hwnd, msg, core::input::released);
 
                 break;
             }
@@ -87,7 +87,7 @@ namespace windows
             case WM_MBUTTONDOWN:
             case WM_RBUTTONDOWN:
             {
-                process_button_message(hwnd, msg, true);
+                process_button_message(hwnd, msg, core::input::pressed);
 
                 break;
             }
