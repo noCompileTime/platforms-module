@@ -1,12 +1,12 @@
 #include "window_manager.hpp"
 
-#include "windows/platforms_factory.hpp"
+#include "platforms_factory.hpp"
 
 namespace core
 {
     auto WindowManager::init() -> void
     {
-         const auto factory = std::make_unique<windows::PlatformsFactory>();
+         const auto factory = PlatformsFactory::create_factory(); // TODO this as a member of the window manager?
 
         _window = factory->create_window();
         _window->create();
