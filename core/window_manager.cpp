@@ -21,6 +21,7 @@ namespace core
     auto WindowManager::release() const -> void
     {
         _window_events->release(_window);
+        _window_input ->release(_window);
 
         _window->destroy();
     }

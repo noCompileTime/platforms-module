@@ -12,7 +12,7 @@ namespace core
 
         auto  window()        const -> base::Window&;
         auto  window_events() const -> base::WindowEvents&;
-        auto  window_input()  const -> base::WindowInput&;
+        auto  window_input () const -> base::WindowInput&;
 
     private:
         std::unique_ptr<base::Window>       _window;

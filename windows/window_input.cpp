@@ -16,12 +16,12 @@ namespace windows
 
     auto WindowInput::init_codes() -> void
     {
-        codes[VK_ESCAPE] = core::input::codes::key_escape;
-        codes[VK_SPACE]  = core::input::codes::key_space;
-        codes[VK_TAB]    = core::input::codes::key_tab;
-
         codes[VK_LBUTTON] = core::input::codes::button_left;
         codes[VK_MBUTTON] = core::input::codes::button_middle;
         codes[VK_RBUTTON] = core::input::codes::button_right;
+
+        codes[VK_ESCAPE]  = core::input::codes::key_escape;
+        codes[VK_SPACE]   = core::input::codes::key_space;
+        codes[VK_TAB]     = core::input::codes::key_tab;
     }
 }
