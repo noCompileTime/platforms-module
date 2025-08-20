@@ -55,20 +55,6 @@ namespace windows
 
                 return 0;
             }
-            case WM_KEYDOWN:
-            case WM_SYSKEYDOWN:
-            {
-                process_key_message(hwnd, wparam, core::input::pressed);
-
-                break;
-            }
-            case WM_KEYUP:
-            case WM_SYSKEYUP:
-            {
-                process_key_message(hwnd, wparam, core::input::released);
-
-                break;
-            }
             case WM_LBUTTONDOWN:
             case WM_MBUTTONDOWN:
             case WM_RBUTTONDOWN:
@@ -82,6 +68,20 @@ namespace windows
             case WM_RBUTTONUP:
             {
                 process_button_message(hwnd, msg, core::input::released);
+
+                break;
+            }
+            case WM_KEYDOWN:
+            case WM_SYSKEYDOWN:
+            {
+                process_key_message(hwnd, wparam, core::input::pressed);
+
+                break;
+            }
+            case WM_KEYUP:
+            case WM_SYSKEYUP:
+            {
+                process_key_message(hwnd, wparam, core::input::released);
 
                 break;
             }
