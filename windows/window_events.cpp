@@ -59,7 +59,10 @@ namespace windows
             case WM_MBUTTONDOWN:
             case WM_RBUTTONDOWN:
             {
-                process_button_message(hwnd, msg, core::input::pressed);
+                const auto code = msg == WM_LBUTTONDOWN ? VK_LBUTTON :
+                                  msg == WM_MBUTTONDOWN ? VK_MBUTTON : VK_RBUTTON;
+
+                process_button_message(hwnd, code, core::input::pressed);
 
                 break;
             }
@@ -67,7 +70,10 @@ namespace windows
             case WM_MBUTTONUP:
             case WM_RBUTTONUP:
             {
-                process_button_message(hwnd, msg, core::input::released);
+                const auto code  = msg == WM_LBUTTONUP ? VK_LBUTTON :
+                                   msg == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
+
+                process_button_message(hwnd, code, core::input::released);
 
                 break;
             }
@@ -101,10 +107,7 @@ namespace windows
         if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
                        window_input && window_input->callbacks.button_press)
         {
-            const auto button  = code == WM_LBUTTONUP ? VK_LBUTTON :
-                                 code == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
-
-            if (const auto it  = window_input->codes.find(button);
+            if (const auto it  = window_input->codes.find(code);
                            it != window_input->codes.end())
             {
                 window_input->callbacks.button_press(it->second, state);
