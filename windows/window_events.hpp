@@ -9,7 +9,7 @@ namespace windows
     public:
         auto    init(const std::unique_ptr<core::base::Window>& window) -> void override;
         auto release(const std::unique_ptr<core::base::Window>& window) -> void override;
-        auto  update()                                            const -> void override;
+        auto  update()                                           const  -> void override;
 
         static auto process_message(HWND hwnd, uint32_t msg, uintptr_t wparam, intptr_t lparam) -> intptr_t;
 
