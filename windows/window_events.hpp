@@ -1,7 +1,6 @@
 #pragma once
 
 #include "core/base/window_events.hpp"
-#include "core/base/window_input.hpp"
 
 namespace windows
 {
