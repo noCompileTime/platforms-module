@@ -14,7 +14,7 @@ namespace windows
         static auto process_message(HWND hwnd, uint32_t msg, uintptr_t wparam, intptr_t lparam) -> intptr_t;
 
     private:
-        static auto process_button_message(HWND hwnd,  uint32_t code, core::input::state state) -> void;
-        static auto process_key_message   (HWND hwnd, uintptr_t code, core::input::state state) -> void;
+        static auto process_btn_message(HWND hwnd,  uint32_t code, core::input::state state) -> void;
+        static auto process_key_message(HWND hwnd, uintptr_t code, core::input::state state) -> void;
     };
 }

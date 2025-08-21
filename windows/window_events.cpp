@@ -62,7 +62,7 @@ namespace windows
                 const auto code = msg == WM_LBUTTONDOWN ? VK_LBUTTON :
                                   msg == WM_MBUTTONDOWN ? VK_MBUTTON : VK_RBUTTON;
 
-                process_button_message(hwnd, code, core::input::pressed);
+                process_btn_message(hwnd, code, core::input::pressed);
 
                 break;
             }
@@ -73,7 +73,7 @@ namespace windows
                 const auto code = msg == WM_LBUTTONUP ? VK_LBUTTON :
                                   msg == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
 
-                process_button_message(hwnd, code, core::input::released);
+                process_btn_message(hwnd, code, core::input::released);
 
                 break;
             }
@@ -102,15 +102,15 @@ namespace windows
         return DefWindowProc(hwnd, msg, wparam, lparam);
     }
 
-    auto WindowEvents::process_button_message(const HWND hwnd, const uint32_t code, const core::input::state state) -> void
+    auto WindowEvents::process_btn_message(const HWND hwnd, const uint32_t code, const core::input::state state) -> void
     {
         if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
-                       window_input && window_input->callbacks.button_press)
+                       window_input && window_input->callbacks.btn_press)
         {
             if (const auto it  = window_input->codes.find(code);
                            it != window_input->codes.end())
             {
-                window_input->callbacks.button_press(it->second, state);
+                window_input->callbacks.btn_press(it->second, state);
             }
         }
     }
