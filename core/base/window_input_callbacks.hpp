@@ -1,8 +1,5 @@
 #pragma once
 
-#include "core/input/codes.hpp"
-#include "core/input/state.hpp"
-
 namespace core::base
 {
     struct window_input_callbacks
