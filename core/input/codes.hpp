@@ -13,8 +13,8 @@ namespace core::input
         key_escape,
         key_tab,
 
-        button_left,
-        button_middle,
-        button_right
+        btn_left,
+        btn_middle,
+        btn_right
     };
 }
