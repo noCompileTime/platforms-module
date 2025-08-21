@@ -70,8 +70,8 @@ namespace windows
             case WM_MBUTTONUP:
             case WM_RBUTTONUP:
             {
-                const auto code  = msg == WM_LBUTTONUP ? VK_LBUTTON :
-                                   msg == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
+                const auto code = msg == WM_LBUTTONUP ? VK_LBUTTON :
+                                  msg == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
 
                 process_button_message(hwnd, code, core::input::released);
 
