@@ -80,7 +80,10 @@ namespace windows
             case WM_KEYDOWN:
             case WM_SYSKEYDOWN:
             {
-                process_key_message(hwnd, wparam, core::input::pressed);
+                if ((lparam & 1 << 30) == 0)
+                {
+                    process_key_message(hwnd, wparam, core::input::pressed);
+                }
 
                 break;
             }
