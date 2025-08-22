@@ -107,10 +107,10 @@ namespace windows
         if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
                        window_input && window_input->callbacks.btn_press)
         {
-            if (const auto it  = window_input->codes.find(code);
-                           it != window_input->codes.end())
+            if (const auto iterator  = window_input->codes.find(code);
+                           iterator != window_input->codes.end())
             {
-                window_input->callbacks.btn_press(it->second, state);
+                window_input->callbacks.btn_press(iterator->second, state);
             }
         }
     }
@@ -120,10 +120,10 @@ namespace windows
         if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
                        window_input && window_input->callbacks.key_press)
         {
-            if (const auto it  = window_input->codes.find(code);
-                           it != window_input->codes.end())
+            if (const auto iterator  = window_input->codes.find(code);
+                           iterator != window_input->codes.end())
             {
-                window_input->callbacks.key_press(it->second, state);
+                window_input->callbacks.key_press(iterator->second, state);
             }
         }
     }
