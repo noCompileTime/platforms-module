@@ -56,22 +56,22 @@ namespace windows
                 return 0;
             }
             case WM_LBUTTONDOWN:
-            case WM_MBUTTONDOWN:
             case WM_RBUTTONDOWN:
+            case WM_MBUTTONDOWN:
             {
                 const auto code = msg == WM_LBUTTONDOWN ? VK_LBUTTON :
-                                  msg == WM_MBUTTONDOWN ? VK_MBUTTON : VK_RBUTTON;
+                                  msg == WM_RBUTTONDOWN ? VK_RBUTTON : VK_MBUTTON;
 
                 process_btn_message(hwnd, code, core::input::pressed);
 
                 break;
             }
             case WM_LBUTTONUP:
-            case WM_MBUTTONUP:
             case WM_RBUTTONUP:
+            case WM_MBUTTONUP:
             {
                 const auto code = msg == WM_LBUTTONUP ? VK_LBUTTON :
-                                  msg == WM_MBUTTONUP ? VK_MBUTTON : VK_RBUTTON;
+                                  msg == WM_RBUTTONUP ? VK_RBUTTON : VK_MBUTTON;
 
                 process_btn_message(hwnd, code, core::input::released);
 
