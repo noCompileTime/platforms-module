@@ -33,28 +33,6 @@ namespace windows
     {
         switch (msg)
         {
-            case WM_CREATE:
-            {
-                SetThreadExecutionState(ES_DISPLAY_REQUIRED | ES_CONTINUOUS);
-
-                break;
-            }
-            case WM_DESTROY:
-            {
-                SetThreadExecutionState(ES_CONTINUOUS);
-
-                break;
-            }
-            case WM_CLOSE:
-            {
-                if (const auto window_events = static_cast<WindowEvents*>(GetProp(hwnd, "events"));
-                               window_events && window_events->callbacks.close)
-                {
-                    window_events->callbacks.close();
-                }
-
-                return 0;
-            }
             case WM_LBUTTONDOWN:
             case WM_RBUTTONDOWN:
             case WM_MBUTTONDOWN:
@@ -93,6 +71,28 @@ namespace windows
                 process_key_message(hwnd, wparam, core::input::released);
 
                 break;
+            }
+            case WM_CREATE:
+            {
+                SetThreadExecutionState(ES_CONTINUOUS | ES_DISPLAY_REQUIRED);
+
+                break;
+            }
+            case WM_DESTROY:
+            {
+                SetThreadExecutionState(ES_CONTINUOUS);
+
+                break;
+            }
+            case WM_CLOSE:
+            {
+                if (const auto window_events = static_cast<WindowEvents*>(GetProp(hwnd, "events"));
+                               window_events && window_events->callbacks.close)
+                {
+                    window_events->callbacks.close();
+                }
+
+                return 0;
             }
             case WM_ERASEBKGND:
             {
