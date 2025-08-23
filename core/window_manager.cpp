@@ -6,7 +6,7 @@ namespace core
 {
     auto WindowManager::init() -> void
     {
-         const auto factory = PlatformsFactory::create_factory();
+       const auto factory = PlatformsFactory::create_factory();
 
         _window = factory->create_window();
         _window->create();
