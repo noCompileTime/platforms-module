@@ -31,6 +31,11 @@ namespace core
         _window_events->update();
     }
 
+    auto WindowManager::update() const -> void
+    {
+        _window_events->update();
+    }
+
     auto WindowManager::window() const -> base::Window&
     {
         return *_window;
