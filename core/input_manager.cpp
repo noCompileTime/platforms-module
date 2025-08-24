@@ -11,11 +11,7 @@ namespace core
 
         for (const auto& change : _states_changes)
         {
-            if (const auto iterator  = actions.find(change);
-                           iterator != actions.end())
-            {
-                iterator->second();
-            }
+            _actions.execute(change);
         }
 
         _states_changes.clear();

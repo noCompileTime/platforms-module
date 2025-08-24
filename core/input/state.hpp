@@ -5,6 +5,6 @@ namespace core::input
     enum state
     {
         released,
-        pressed
+         pressed
     };
 }
