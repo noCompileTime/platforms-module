@@ -24,9 +24,9 @@ namespace windows
         codes[VK_SPACE]   = core::input::code::key_space;
         codes[VK_TAB]     = core::input::code::key_tab;
 
-        codes['W'] = core::input::code::key_w;
-        codes['A'] = core::input::code::key_a;
-        codes['S'] = core::input::code::key_s;
-        codes['D'] = core::input::code::key_d;
+        codes['W']  = core::input::code::key_w;
+        codes['A']  = core::input::code::key_a;
+        codes['S']  = core::input::code::key_s;
+        codes['D']  = core::input::code::key_d;
     }
 }
