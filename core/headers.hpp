@@ -2,9 +2,11 @@
 
 #include <any>
 
+#include <algorithm>
 #include <functional>
 
 #include <memory>
+#include <vector>
 
-#include "input/codes.hpp"
+#include "input/code.hpp"
 #include "input/state.hpp"

@@ -16,17 +16,17 @@ namespace windows
 
     auto WindowInput::init_codes() -> void
     {
-        codes[VK_LBUTTON] = core::input::codes::btn_left;
-        codes[VK_MBUTTON] = core::input::codes::btn_middle;
-        codes[VK_RBUTTON] = core::input::codes::btn_right;
+        codes[VK_LBUTTON] = core::input::code::btn_left;
+        codes[VK_MBUTTON] = core::input::code::btn_middle;
+        codes[VK_RBUTTON] = core::input::code::btn_right;
 
-        codes[VK_ESCAPE]  = core::input::codes::key_escape;
-        codes[VK_SPACE]   = core::input::codes::key_space;
-        codes[VK_TAB]     = core::input::codes::key_tab;
+        codes[VK_ESCAPE]  = core::input::code::key_escape;
+        codes[VK_SPACE]   = core::input::code::key_space;
+        codes[VK_TAB]     = core::input::code::key_tab;
 
-        codes['W']  = core::input::codes::key_w;
-        codes['A']  = core::input::codes::key_a;
-        codes['S']  = core::input::codes::key_s;
-        codes['D']  = core::input::codes::key_d;
+        codes['W'] = core::input::code::key_w;
+        codes['A'] = core::input::code::key_a;
+        codes['S'] = core::input::code::key_s;
+        codes['D'] = core::input::code::key_d;
     }
 }

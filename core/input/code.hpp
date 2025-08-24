@@ -2,7 +2,7 @@
 
 namespace core::input
 {
-    enum class codes
+    enum class code
     {
         key_w,
         key_a,
