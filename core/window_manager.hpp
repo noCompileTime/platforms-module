@@ -9,6 +9,7 @@ namespace core
     public:
         auto    init()       -> void;
         auto release() const -> void;
+        auto  update() const -> void;
 
         auto  window()        const -> base::Window&;
         auto  window_events() const -> base::WindowEvents&;
