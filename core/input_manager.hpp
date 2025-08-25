@@ -16,7 +16,7 @@ namespace core
         auto is_pressed(input::code code) const -> bool;
 
     private:
-        InputActions _actions;
+        InputActions _actions; // TODO make a getter for this?
 
         input::states_changes _states_changes;
         input::states         _states;
