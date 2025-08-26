@@ -1,8 +1,8 @@
 #pragma once
 
-namespace core::base
+namespace core::window
 {
-    struct window_events_callbacks
+    struct events_callbacks
     {
         std::function<void()> close { };
     };

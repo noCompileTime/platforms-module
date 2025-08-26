@@ -1,8 +1,6 @@
 #pragma once
 
 #include "window.hpp"
-#include "window_input_callbacks.hpp"
-#include "window_input_codes.hpp"
 
 namespace core::base
 {
@@ -14,8 +12,8 @@ namespace core::base
 
         virtual ~WindowInput() = default;
 
-        window_input_callbacks callbacks;
-        window_input_codes     codes;
+        window::input_callbacks callbacks;
+        window::input_codes     codes;
 
     private:
         virtual auto init_codes() -> void = 0;
