@@ -2,7 +2,7 @@
 
 namespace core
 {
-    auto InputActions::add_action(const input::code code, const input::action& action) -> void
+    auto InputActions::set_action(const input::code code, const input::action& action) -> void
     {
         _actions[code] = action;
     }

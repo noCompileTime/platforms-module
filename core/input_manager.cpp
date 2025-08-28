@@ -19,8 +19,8 @@ namespace core
 
     auto InputManager::update(const input::code code, const input::state state) -> void
     {
-       auto& previous_state =                _states.previous[code];
-             previous_state =  std::exchange(_states.current [code], state);
+      auto& previous_state =                _states.previous[code];
+            previous_state =  std::exchange(_states.current [code], state);
 
         if (previous_state == input::state::released &&
                      state == input::state::pressed)
