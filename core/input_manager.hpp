@@ -1,7 +1,7 @@
 #pragma once
 
-#include "states.hpp"
-#include "types.hpp"
+#include "input/states.hpp"
+#include "input/types.hpp"
 
 #include "input_actions.hpp"
 
