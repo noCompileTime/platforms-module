@@ -6,10 +6,10 @@ namespace core
     {
     public:
         auto add_action(input::code code, const input::action& action) -> void;
-
-        auto    execute(input::code code) -> void;
+        auto    execute(input::code code)                              -> void;
 
     private:
-        std::unordered_map<input::code, input::action> _actions;
+        std::unordered_map<input::code,
+                           input::action> _actions;
     };
 }

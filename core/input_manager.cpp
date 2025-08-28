@@ -37,4 +37,9 @@ namespace core
         const auto iterator  = _states.current.find(code);
             return iterator != _states.current.end() && iterator->second == input::state::pressed;
     }
+
+    auto InputManager::actions() -> InputActions&
+    {
+        return _actions;
+    }
 }
