@@ -1,6 +1,6 @@
 #pragma once
 
-#include "input/types.hpp"
+#include "types.hpp"
 
 namespace core
 {
