@@ -2,6 +2,11 @@
 
 namespace core
 {
+    auto InputManager::init(std::unique_ptr<InputActions> actions) -> void
+    {
+        _input_actions = std::move(actions);
+    }
+
     auto InputManager::update() -> void
     {
         if (_states_changes.empty())
@@ -11,7 +16,7 @@ namespace core
 
         for (const auto& change : _states_changes)
         {
-            _actions.execute(change);
+            _input_actions->execute(change);
         }
 
         _states_changes.clear();
@@ -38,8 +43,8 @@ namespace core
             return iterator != _states.current.end() && iterator->second == input::state::pressed;
     }
 
-    auto InputManager::actions() -> InputActions&
+    auto InputManager::input_actions() const -> InputActions&
     {
-        return _actions;
+        return *_input_actions;
     }
 }
