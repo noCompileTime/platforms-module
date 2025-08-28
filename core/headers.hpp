@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <functional>
 
+#include "input/action.hpp"
 #include "input/code.hpp"
 #include "input/state.hpp"
 

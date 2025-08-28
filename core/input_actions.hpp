@@ -1,7 +1,5 @@
 #pragma once
 
-#include "input/types.hpp"
-
 namespace core
 {
     class InputActions
@@ -12,6 +10,6 @@ namespace core
         auto    execute(input::code code) -> void;
 
     private:
-        input::actions _actions;
+        std::unordered_map<input::code, input::action> _actions;
     };
 }
