@@ -40,7 +40,7 @@ namespace windows
                 const auto code = msg == WM_LBUTTONDOWN ? VK_LBUTTON :
                                   msg == WM_RBUTTONDOWN ? VK_RBUTTON : VK_MBUTTON;
 
-                process_btn_message(hwnd, code, core::input::pressed);
+                process_btn_message(hwnd, code, core::input::state::pressed);
 
                 break;
             }
@@ -51,7 +51,7 @@ namespace windows
                 const auto code = msg == WM_LBUTTONUP ? VK_LBUTTON :
                                   msg == WM_RBUTTONUP ? VK_RBUTTON : VK_MBUTTON;
 
-                process_btn_message(hwnd, code, core::input::released);
+                process_btn_message(hwnd, code, core::input::state::released);
 
                 break;
             }
@@ -60,7 +60,7 @@ namespace windows
             {
                 if ((lparam & 1 << 30) == 0)
                 {
-                    process_key_message(hwnd, wparam, core::input::pressed);
+                    process_key_message(hwnd, wparam, core::input::state::pressed);
                 }
 
                 break;
@@ -68,7 +68,7 @@ namespace windows
             case WM_KEYUP:
             case WM_SYSKEYUP:
             {
-                process_key_message(hwnd, wparam, core::input::released);
+                process_key_message(hwnd, wparam, core::input::state::released);
 
                 break;
             }

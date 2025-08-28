@@ -22,7 +22,8 @@ namespace core
        auto& previous_state =                _states.previous[code];
              previous_state =  std::exchange(_states.current [code], state);
 
-        if (!previous_state && state)
+        if (previous_state == input::state::released &&
+                     state == input::state::pressed)
         {
             if (!std::ranges::contains(_states_changes, code))
             {

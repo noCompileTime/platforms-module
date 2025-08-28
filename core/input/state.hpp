@@ -2,7 +2,7 @@
 
 namespace core::input
 {
-    enum state
+    enum class state
     {
         released,
          pressed
