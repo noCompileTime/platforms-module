@@ -1,6 +1,6 @@
 #pragma once
 
-#include "input/state.hpp"
+#include "state.hpp"
 
 namespace core::input
 {

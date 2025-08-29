@@ -12,10 +12,11 @@ namespace core::base
 
         virtual ~WindowInput() = default;
 
-        window::input_callbacks callbacks;
-        window::input_codes     codes;
-
     private:
         virtual auto init_codes() -> void = 0;
+
+    public:
+        window::input_callbacks callbacks;
+        window::input_codes     codes;
     };
 }
