@@ -9,7 +9,6 @@ namespace core
         auto    execute(input::code code)                              -> void;
 
     private:
-        std::unordered_map<input::code,
-                           input::action> _actions;
+        std::unordered_map<input::code, input::action> _actions;
     };
 }
