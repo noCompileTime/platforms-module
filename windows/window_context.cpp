@@ -14,7 +14,7 @@ namespace windows
 
         if (!SetPixelFormat(_hdc, ChoosePixelFormat(_hdc, &pfd), &pfd))
         {
-            std::exit(EXIT_FAILURE);
+            std::exit(core::window::status::pixel_format_not_available);
         }
 
         _hrc = wglCreateContext(_hdc);
