@@ -11,6 +11,9 @@ namespace core
         _window = factory->create_window();
         _window->create();
 
+        _window_context = factory->create_window_context();
+        _window_context->create(_window);
+
         _window_events = factory->create_window_events();
         _window_events->init(_window);
 
@@ -23,7 +26,8 @@ namespace core
         _window_events->release(_window);
         _window_input ->release(_window);
 
-        _window->destroy();
+        _window_context->destroy();
+        _window        ->destroy();
     }
 
     auto WindowManager::update() const -> void
@@ -34,6 +38,11 @@ namespace core
     auto WindowManager::window() const -> base::Window&
     {
         return *_window;
+    }
+
+    auto WindowManager::window_context() const -> base::WindowContext&
+    {
+        return *_window_context;
     }
 
     auto WindowManager::window_events() const -> base::WindowEvents&
