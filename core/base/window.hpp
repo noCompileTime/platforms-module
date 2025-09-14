@@ -15,4 +15,6 @@ namespace core::base
 
         virtual      ~Window() = default;
     };
+
+    using window_ptr = std::unique_ptr<Window>;
 }
