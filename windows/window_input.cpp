@@ -9,7 +9,7 @@ namespace windows
         init_codes();
     }
 
-    auto WindowInput::release(const std::unique_ptr<core::base::Window>& window) -> void
+    auto WindowInput::release(const std::unique_ptr<core::base::Window>& window) const -> void
     {
         RemoveProp(std::any_cast<HWND>(window->handle()), "input");
     }

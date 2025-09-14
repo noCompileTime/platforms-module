@@ -8,7 +8,7 @@ namespace windows
         SetProp(std::any_cast<HWND>(window->handle()), "events", this);
     }
 
-    auto WindowEvents::release(const std::unique_ptr<core::base::Window>& window) -> void
+    auto WindowEvents::release(const std::unique_ptr<core::base::Window>& window) const -> void
     {
         RemoveProp(std::any_cast<HWND>(window->handle()), "events");
     }
