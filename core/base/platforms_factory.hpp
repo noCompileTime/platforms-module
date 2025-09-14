@@ -9,10 +9,10 @@ namespace core::base
     class PlatformsFactory
     {
     public:
-        virtual auto create_window()         -> std::unique_ptr<Window>        = 0;
-        virtual auto create_window_context() -> std::unique_ptr<WindowContext> = 0;
-        virtual auto create_window_events () -> std::unique_ptr<WindowEvents>  = 0;
-        virtual auto create_window_input  () -> std::unique_ptr<WindowInput>   = 0;
+        virtual auto create_window()         const -> std::unique_ptr<Window>        = 0;
+        virtual auto create_window_context() const -> std::unique_ptr<WindowContext> = 0;
+        virtual auto create_window_events () const -> std::unique_ptr<WindowEvents>  = 0;
+        virtual auto create_window_input  () const -> std::unique_ptr<WindowInput>   = 0;
 
         virtual  ~PlatformsFactory() = default;
     };

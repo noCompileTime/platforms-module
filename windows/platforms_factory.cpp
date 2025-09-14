@@ -7,22 +7,22 @@
 
 namespace windows
 {
-    auto PlatformsFactory::create_window() -> std::unique_ptr<core::base::Window>
+    auto PlatformsFactory::create_window() const -> std::unique_ptr<core::base::Window>
     {
         return std::make_unique<Window>();
     }
 
-    auto PlatformsFactory::create_window_context() -> std::unique_ptr<core::base::WindowContext>
+    auto PlatformsFactory::create_window_context() const -> std::unique_ptr<core::base::WindowContext>
     {
         return std::make_unique<WindowContext>();
     }
 
-    auto PlatformsFactory::create_window_events() -> std::unique_ptr<core::base::WindowEvents>
+    auto PlatformsFactory::create_window_events() const -> std::unique_ptr<core::base::WindowEvents>
     {
         return std::make_unique<WindowEvents>();
     }
 
-    auto PlatformsFactory::create_window_input() -> std::unique_ptr<core::base::WindowInput>
+    auto PlatformsFactory::create_window_input() const -> std::unique_ptr<core::base::WindowInput>
     {
         return std::make_unique<WindowInput>();
     }

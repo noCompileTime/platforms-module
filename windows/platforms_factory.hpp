@@ -7,9 +7,9 @@ namespace windows
     class PlatformsFactory final : public core::base::PlatformsFactory
     {
     public:
-        auto create_window()         -> std::unique_ptr<core::base::Window>        override;
-        auto create_window_context() -> std::unique_ptr<core::base::WindowContext> override;
-        auto create_window_events () -> std::unique_ptr<core::base::WindowEvents>  override;
-        auto create_window_input  () -> std::unique_ptr<core::base::WindowInput>   override;
+        auto create_window()         const -> std::unique_ptr<core::base::Window>        override;
+        auto create_window_context() const -> std::unique_ptr<core::base::WindowContext> override;
+        auto create_window_events () const -> std::unique_ptr<core::base::WindowEvents>  override;
+        auto create_window_input  () const -> std::unique_ptr<core::base::WindowInput>   override;
     };
 }
