@@ -8,7 +8,7 @@ namespace windows
     {
     public:
         auto  create()       -> void override;
-        auto destroy()       -> void override;
+        auto destroy() const -> void override;
 
         auto  handle() const -> std::any override;
         auto    show() const -> void     override;

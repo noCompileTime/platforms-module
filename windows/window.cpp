@@ -12,7 +12,7 @@ namespace windows
         _hwnd = CreateWindowEx(_extra, MAKEINTATOM(_id), "Platforms Framework", _style, CW_USEDEFAULT, CW_USEDEFAULT, 1280, 720, nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
     }
 
-    auto Window::destroy() -> void
+    auto Window::destroy() const -> void
     {
         DestroyWindow(_hwnd);
 
