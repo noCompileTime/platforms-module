@@ -15,7 +15,7 @@ namespace core
 
     private:
         input::states_changes _states_changes;
-        input::states         _states;
+        input::states_values  _states_values;
 
         InputActions _input_actions;
     };

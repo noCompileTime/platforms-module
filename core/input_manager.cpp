@@ -19,8 +19,8 @@ namespace core
 
     auto InputManager::update(const input::code code, const input::state state) -> void
     {
-      auto& previous_state =                _states.previous[code];
-            previous_state =  std::exchange(_states.current [code], state);
+      auto& previous_state =                _states_values.previous[code];
+            previous_state =  std::exchange(_states_values.current [code], state);
 
         if (previous_state == input::state::released &&
                      state == input::state::pressed)
@@ -34,8 +34,8 @@ namespace core
 
     auto InputManager::is_pressed(const input::code code) const -> bool
     {
-        const auto iterator  = _states.current.find(code);
-            return iterator != _states.current.end() && iterator->second == input::state::pressed;
+        const auto iterator  = _states_values.current.find(code);
+            return iterator != _states_values.current.end() && iterator->second == input::state::pressed;
     }
 
     auto InputManager::input_actions() -> InputActions&

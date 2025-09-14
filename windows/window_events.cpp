@@ -29,7 +29,7 @@ namespace windows
         }
     }
 
-    auto WindowEvents::process_message(const HWND hwnd, const uint32_t msg, const uintptr_t wparam, const intptr_t lparam) -> intptr_t
+    auto WindowEvents::process_message(const HWND hwnd, const UINT msg, const WPARAM wparam, const LPARAM lparam) -> LRESULT
     {
         switch (msg)
         {
@@ -118,7 +118,7 @@ namespace windows
         }
     }
 
-    auto WindowEvents::process_key_message(const HWND hwnd, const uintptr_t code, const core::input::state state) -> void
+    auto WindowEvents::process_key_message(const HWND hwnd, const WPARAM code, const core::input::state state) -> void
     {
         if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
                        window_input && window_input->callbacks.key_press)
