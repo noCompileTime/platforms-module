@@ -2,7 +2,7 @@
 
 namespace windows
 {
-    auto WindowContext::create(const std::unique_ptr<core::base::Window>& window) -> void
+    auto WindowContext::create(const core::base::window_ptr& window) -> void
     {
         constexpr PIXELFORMATDESCRIPTOR pfd
         {

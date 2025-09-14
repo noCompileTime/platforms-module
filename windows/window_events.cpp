@@ -3,12 +3,12 @@
 
 namespace windows
 {
-    auto WindowEvents::init(const std::unique_ptr<core::base::Window>& window) -> void
+    auto WindowEvents::init(const core::base::window_ptr& window) -> void
     {
         SetProp(std::any_cast<HWND>(window->handle()), "events", this);
     }
 
-    auto WindowEvents::release(const std::unique_ptr<core::base::Window>& window) const -> void
+    auto WindowEvents::release(const core::base::window_ptr& window) const -> void
     {
         RemoveProp(std::any_cast<HWND>(window->handle()), "events");
     }
@@ -86,7 +86,7 @@ namespace windows
             }
             case WM_CLOSE:
             {
-                if (const auto window_events = static_cast<WindowEvents*>(GetProp(hwnd, "events"));
+                if (const auto window_events  = static_cast<WindowEvents*>(GetProp(hwnd, "events"));
                                window_events && window_events->callbacks.close)
                 {
                     window_events->callbacks.close();
@@ -107,7 +107,7 @@ namespace windows
 
     auto WindowEvents::process_btn_message(const HWND hwnd, const uint32_t code, const core::input::state state) -> void
     {
-        if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
+        if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, "input"));
                        window_input && window_input->callbacks.btn_press)
         {
             if (const auto iterator  = window_input->codes.find(code);
@@ -120,7 +120,7 @@ namespace windows
 
     auto WindowEvents::process_key_message(const HWND hwnd, const WPARAM code, const core::input::state state) -> void
     {
-        if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, "input"));
+        if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, "input"));
                        window_input && window_input->callbacks.key_press)
         {
             if (const auto iterator  = window_input->codes.find(code);

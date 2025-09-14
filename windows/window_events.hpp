@@ -7,9 +7,9 @@ namespace windows
     class WindowEvents final : public core::base::WindowEvents
     {
     public:
-        auto    init(const std::unique_ptr<core::base::Window>& window)       -> void override;
-        auto release(const std::unique_ptr<core::base::Window>& window) const -> void override;
-        auto  update()                                                  const -> void override;
+        auto    init(const core::base::window_ptr& window)       -> void override;
+        auto release(const core::base::window_ptr& window) const -> void override;
+        auto  update()                                     const -> void override;
 
         static auto process_message(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) -> LRESULT;
 
