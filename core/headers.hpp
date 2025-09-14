@@ -5,7 +5,6 @@
 #include <algorithm>
 #include <functional>
 
-#include "input/action.hpp"
 #include "input/states_changes.hpp"
 #include "input/states_values.hpp"
 
