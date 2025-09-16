@@ -1,10 +1,10 @@
 #pragma once
 
-#include "core/base/platforms_factory.hpp"
+#include "core/base/platform_factory.hpp"
 
 namespace windows
 {
-    class PlatformsFactory final : public core::base::PlatformsFactory
+    class PlatformFactory final : public core::base::PlatformFactory
     {
     public:
         auto create_window()         const -> std::unique_ptr<core::base::Window>        override;

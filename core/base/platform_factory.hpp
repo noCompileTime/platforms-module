@@ -6,7 +6,7 @@
 
 namespace core::base
 {
-    class PlatformsFactory
+    class PlatformFactory
     {
     public:
         virtual auto create_window()         const -> std::unique_ptr<Window>        = 0;
@@ -14,6 +14,6 @@ namespace core::base
         virtual auto create_window_events () const -> std::unique_ptr<WindowEvents>  = 0;
         virtual auto create_window_input  () const -> std::unique_ptr<WindowInput>   = 0;
 
-        virtual  ~PlatformsFactory() = default;
+        virtual  ~PlatformFactory() = default;
     };
 }

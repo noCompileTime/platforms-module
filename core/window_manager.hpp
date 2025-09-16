@@ -1,15 +1,15 @@
 #pragma once
 
-#include "base/platforms_factory.hpp"
+#include "base/platform_factory.hpp"
 
 namespace core
 {
     class WindowManager
     {
     public:
-        auto    init()       -> void;
-        auto release() const -> void;
-        auto  update() const -> void;
+        auto    init(const std::unique_ptr<base::PlatformFactory>& factory) -> void;
+        auto release()         const -> void;
+        auto  update()         const -> void;
 
         auto  window()         const -> base::Window&;
         auto  window_context() const -> base::WindowContext&;
