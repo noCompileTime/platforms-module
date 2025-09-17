@@ -7,8 +7,8 @@ namespace windows
     public:
         auto  create(const core::base::window_ptr& window, int32_t samples) -> void override;
         auto  create(const core::base::window_ptr& window)                  -> void override;
-        auto destroy()                               const -> void override;
-        auto  update()                               const -> void override;
+        auto destroy()                                                const -> void override;
+        auto  update()                                                const -> void override;
 
     private:
         HGLRC _hrc { };
