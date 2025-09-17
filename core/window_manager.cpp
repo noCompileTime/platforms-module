@@ -8,7 +8,7 @@ namespace core
         _window->create();
 
         _window_context = factory->create_window_context();
-        _window_context->create(_window);
+        _window_context->create(_window, 4);
 
         _window_events = factory->create_window_events();
         _window_events->init(_window);
