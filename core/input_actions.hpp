@@ -1,7 +1,5 @@
 #pragma once
 
-#include "input/action.hpp"
-
 namespace core
 {
     class InputActions
