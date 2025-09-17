@@ -4,9 +4,15 @@
 #include "window_input.hpp"
 
 #include "platform_factory.hpp"
+#include "platform_functions.hpp"
 
 namespace windows
 {
+    auto PlatformFactory::create_platform_functions() const -> std::unique_ptr<core::base::PlatformFunctions>
+    {
+        return std::make_unique<PlatformFunctions>();
+    }
+
     auto PlatformFactory::create_window() const -> std::unique_ptr<core::base::Window>
     {
         return std::make_unique<Window>();
