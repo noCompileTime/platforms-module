@@ -25,8 +25,7 @@ namespace windows
 
         _hdc = GetDC(std::any_cast<HWND>(window->handle()));
 
-        int32_t format;
-
+             int32_t format;
         if (uint32_t formats; !functions::choose_pixel_format(_hdc, pixel_attributes.data(), nullptr, 1, &format, &formats) || !formats)
         {
             std::exit(core::window::status::pixel_format_not_found);
