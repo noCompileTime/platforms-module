@@ -1,5 +1,8 @@
 #pragma once
 
+#include "code.hpp"
+#include "state.hpp"
+
 namespace core::input
 {
     struct states_values
