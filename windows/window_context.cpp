@@ -8,15 +8,15 @@ namespace windows
         {
             constants::draw_to_window, 1,
             constants::support_opengl, 1,
-            constants::double_buffer, 1,
-            constants::acceleration, constants::full_acceleration,
-            constants::color_type, constants::rgba,
-            constants::color_bits, 32,
-            constants::depth_bits, 24,
-            constants::stencil_bits, 8,
-            constants::srgb_buffer, 0,
+            constants::double_buffer,  1,
+            constants::acceleration,   constants::full_acceleration,
+            constants::color_type,     constants::rgba,
+            constants::color_bits,     32,
+            constants::depth_bits,     24,
+            constants::stencil_bits,   8,
+            constants::srgb_buffer,    0,
             constants::samples_buffer, 1,
-            constants::samples, samples,
+            constants::samples,        samples,
             0
         };
 
@@ -45,13 +45,12 @@ namespace windows
         {
             constants::major_version, 4,
             constants::minor_version, 6,
-            constants::profile, constants::core_profile,
-            constants::flags, constants::no_error,
+            constants::profile,       constants::core_profile,
+            constants::flags,         constants::no_error,
             0
         };
-
-        _hrc = functions::create_context_attribs(_hdc, nullptr, context_attributes.data());
-                wglMakeCurrent(_hdc, _hrc);
+                             _hrc = functions::create_context_attribs(_hdc, nullptr, context_attributes.data());
+        wglMakeCurrent(_hdc, _hrc);
     }
 
     auto WindowContext::create(const core::base::window_ptr& window) -> void
