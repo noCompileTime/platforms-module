@@ -2,10 +2,9 @@
 
 namespace core
 {
-    using seconds = std::chrono::duration<float>;
-
-    using time_clock = std::chrono::high_resolution_clock;
-    using time_point = std::chrono::high_resolution_clock::time_point;
+    using time_clock   = std::chrono::high_resolution_clock;
+    using time_point   = std::chrono::high_resolution_clock::time_point;
+    using time_seconds = std::chrono::duration<float>;
 
     class PlatformTime
     {
@@ -17,7 +16,7 @@ namespace core
         static auto total_time() -> float;
 
     private:
-        static constexpr auto max_delta_time { 0.06667f };
+        static constexpr auto max_delta_time { 1.0 / 30.0f };
 
         inline static float _delta_time { };
         inline static float _total_time { };

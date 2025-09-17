@@ -9,10 +9,10 @@ namespace core
 
     auto PlatformTime::update() -> void
     {
-        const auto current_time = time_clock::now();
+           const auto   current_time = time_clock::now();
 
-        _total_time = seconds(current_time -   _start_time).count();
-        _delta_time = seconds(current_time - _current_time).count();
+          _total_time = time_seconds(current_time -   _start_time).count();
+          _delta_time = time_seconds(current_time - _current_time).count();
 
         _current_time = current_time;
 
