@@ -1,7 +1,5 @@
 #pragma once
 
-#include "core/base/window.hpp"
-
 namespace windows
 {
     class Window final : public core::base::Window

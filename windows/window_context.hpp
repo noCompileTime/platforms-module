@@ -1,7 +1,5 @@
 #pragma once
 
-#include "core/base/window_context.hpp"
-
 namespace windows
 {
     class WindowContext final : public core::base::WindowContext

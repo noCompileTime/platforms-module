@@ -1,7 +1,5 @@
 #pragma once
 
-#include "core/base/platform_factory.hpp"
-
 namespace windows
 {
     class PlatformFactory final : public core::base::PlatformFactory

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "core/base/window_input.hpp"
-
 namespace windows
 {
     class WindowInput final : public core::base::WindowInput

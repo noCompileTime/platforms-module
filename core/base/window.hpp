@@ -1,7 +1,5 @@
 #pragma once
 
-#include <any>
-
 namespace core::base
 {
     class Window

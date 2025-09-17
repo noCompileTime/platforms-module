@@ -1,7 +1,5 @@
 #pragma once
 
-#include "core/base/window_events.hpp"
-
 namespace windows
 {
     class WindowEvents final : public core::base::WindowEvents
