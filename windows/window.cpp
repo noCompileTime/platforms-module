@@ -3,13 +3,13 @@
 
 namespace windows
 {
-    auto Window::create() -> void
+    auto Window::create(const std::string_view title) -> void
     {
          register_class();
 
         _style |= WS_OVERLAPPEDWINDOW;
 
-        _hwnd = CreateWindowEx(_extra, MAKEINTATOM(_id), "Platforms Framework", _style, CW_USEDEFAULT, CW_USEDEFAULT, 1280, 720, nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
+        _hwnd = CreateWindowEx(_extra, MAKEINTATOM(_id), title.data(), _style, CW_USEDEFAULT, CW_USEDEFAULT, 1280, 720, nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
     }
 
     auto Window::destroy() const -> void
@@ -39,7 +39,7 @@ namespace windows
             .hInstance     = GetModuleHandle(nullptr),
             .hIcon         = LoadIcon       (nullptr, IDI_APPLICATION),
             .hCursor       = LoadCursor     (nullptr, IDC_ARROW),
-            .lpszClassName = "window"
+            .lpszClassName = "game_engine_window"
         };
 
         _id = RegisterClassEx(&classex);
