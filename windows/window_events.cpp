@@ -87,9 +87,9 @@ namespace windows
             case WM_CLOSE:
             {
                 if (const auto window_events  = static_cast<WindowEvents*>(GetProp(hwnd, "events"));
-                               window_events && window_events->callbacks.close)
+                               window_events && window_events->callbacks.on_close)
                 {
-                    window_events->callbacks.close();
+                    window_events->callbacks.on_close();
                 }
 
                 return 0;
@@ -108,12 +108,12 @@ namespace windows
     auto WindowEvents::process_btn_message(const HWND hwnd, const uint32_t code, const core::input::state state) -> void
     {
         if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, "input"));
-                       window_input && window_input->callbacks.btn_press)
+                       window_input && window_input->callbacks.on_btn_press)
         {
             if (const auto iterator  = window_input->codes.find(code);
                            iterator != window_input->codes.end())
             {
-                window_input->callbacks.btn_press(iterator->second, state);
+                window_input->callbacks.on_btn_press(iterator->second, state);
             }
         }
     }
@@ -121,12 +121,12 @@ namespace windows
     auto WindowEvents::process_key_message(const HWND hwnd, const WPARAM code, const core::input::state state) -> void
     {
         if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, "input"));
-                       window_input && window_input->callbacks.key_press)
+                       window_input && window_input->callbacks.on_key_press)
         {
             if (const auto iterator  = window_input->codes.find(code);
                            iterator != window_input->codes.end())
             {
-                window_input->callbacks.key_press(iterator->second, state);
+                window_input->callbacks.on_key_press(iterator->second, state);
             }
         }
     }
