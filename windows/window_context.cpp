@@ -2,6 +2,25 @@
 
 namespace windows
 {
+    auto WindowContext::create(const core::base::window_ptr& window) -> void
+    {
+        constexpr PIXELFORMATDESCRIPTOR pfd
+        {
+            .nSize   = sizeof(PIXELFORMATDESCRIPTOR),
+            .dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER
+        };
+
+        _hdc = GetDC(std::any_cast<HWND>(window->handle()));
+
+        if (!SetPixelFormat(_hdc, ChoosePixelFormat(_hdc, &pfd), &pfd))
+        {
+            std::exit(core::window::status::pixel_format_not_available);
+        }
+
+        _hrc = wglCreateContext(_hdc);
+                 wglMakeCurrent(_hdc, _hrc);
+    }
+
     auto WindowContext::create(const core::base::window_ptr& window, int32_t samples) -> void
     {
         const std::array pixel_attributes
@@ -48,27 +67,8 @@ namespace windows
             constants::flags,         constants::no_error,
             0
         };
-                             _hrc = functions::create_context_attribs(_hdc, nullptr, context_attributes.data());
+                       _hrc = functions::create_context_attribs(_hdc, nullptr, context_attributes.data());
         wglMakeCurrent(_hdc, _hrc);
-    }
-
-    auto WindowContext::create(const core::base::window_ptr& window) -> void
-    {
-        constexpr PIXELFORMATDESCRIPTOR pfd
-        {
-            .nSize   = sizeof(PIXELFORMATDESCRIPTOR),
-            .dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER
-        };
-
-        _hdc = GetDC(std::any_cast<HWND>(window->handle()));
-
-        if (!SetPixelFormat(_hdc, ChoosePixelFormat(_hdc, &pfd), &pfd))
-        {
-            std::exit(core::window::status::pixel_format_not_available);
-        }
-
-        _hrc = wglCreateContext(_hdc);
-                 wglMakeCurrent(_hdc, _hrc);
     }
 
     auto WindowContext::destroy() const -> void
