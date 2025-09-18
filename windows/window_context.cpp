@@ -46,9 +46,7 @@ namespace windows
         {
             std::exit(core::window::status::pixel_format_not_found);
         }
-
-        PIXELFORMATDESCRIPTOR pfd;
-
+                                                      PIXELFORMATDESCRIPTOR    pfd;
         if (!DescribePixelFormat(_hdc, format, sizeof(PIXELFORMATDESCRIPTOR), &pfd))
         {
             std::exit(core::window::status::pixel_format_not_supported);
