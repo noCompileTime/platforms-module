@@ -1,6 +1,6 @@
 #pragma once
 
-#include "window.hpp"
+#include "window_ptr.hpp"
 
 namespace core::base
 {

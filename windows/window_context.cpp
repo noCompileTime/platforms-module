@@ -81,4 +81,9 @@ namespace windows
     {
         SwapBuffers(_hdc);
     }
+
+    auto WindowContext::sync(const int32_t interval) const -> void
+    {
+        functions::swap_interval(interval);
+    }
 }
