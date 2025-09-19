@@ -51,16 +51,16 @@ namespace windows
 
     auto Window::register_class() -> void
     {
-        const WNDCLASSEX classex
-        {
-            .cbSize        = sizeof(WNDCLASSEX),
-            .style         = CS_HREDRAW | CS_VREDRAW | CS_OWNDC,
-            .lpfnWndProc   = WindowEvents::process_any_message,
-            .hInstance     = GetModuleHandle(nullptr),
-            .hIcon         = LoadIcon       (nullptr, IDI_APPLICATION),
-            .hCursor       = LoadCursor     (nullptr, IDC_ARROW),
-            .lpszClassName = "game_engine_window"
-        };
+         const WNDCLASSEX classex
+         {
+             .cbSize        = sizeof(WNDCLASSEX),
+             .style         = CS_HREDRAW | CS_VREDRAW | CS_OWNDC,
+             .lpfnWndProc   = WindowEvents::process_any_message,
+             .hInstance     = GetModuleHandle(nullptr),
+             .hIcon         = LoadIcon       (nullptr, IDI_APPLICATION),
+             .hCursor       = LoadCursor     (nullptr, IDC_ARROW),
+             .lpszClassName = "game_engine_window"
+         };
 
         _id = RegisterClassEx(&classex);
     }
