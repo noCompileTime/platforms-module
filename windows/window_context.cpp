@@ -12,7 +12,7 @@ namespace windows
 
         _hdc = GetDC(std::any_cast<HWND>(window->handle()));
 
-        if (!SetPixelFormat(_hdc, ChoosePixelFormat(_hdc, &pfd), &pfd))
+        if (SetPixelFormat(_hdc, ChoosePixelFormat(_hdc, &pfd), &pfd) == false)
         {
             std::exit(core::window::status::pixel_format_not_available);
         }
@@ -46,13 +46,13 @@ namespace windows
         {
             std::exit(core::window::status::pixel_format_not_found);
         }
-                                                      PIXELFORMATDESCRIPTOR    pfd;
-        if (!DescribePixelFormat(_hdc, format, sizeof(PIXELFORMATDESCRIPTOR), &pfd))
+                                                     PIXELFORMATDESCRIPTOR    pfd;
+        if (DescribePixelFormat(_hdc, format, sizeof(PIXELFORMATDESCRIPTOR), &pfd) == 0)
         {
             std::exit(core::window::status::pixel_format_not_supported);
         }
 
-        if (!SetPixelFormat(_hdc, format, &pfd))
+        if (SetPixelFormat(_hdc, format, &pfd) == false)
         {
             std::exit(core::window::status::pixel_format_not_available);
         }

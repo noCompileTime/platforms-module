@@ -25,7 +25,7 @@ namespace core
         if (previous_state == input::state::released &&
                      state == input::state::pressed)
         {
-            if (!std::ranges::contains(_states_changes, code))
+            if (std::ranges::contains(_states_changes, code) == false)
             {
                 _states_changes.emplace_back(code);
             }
