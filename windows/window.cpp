@@ -3,13 +3,33 @@
 
 namespace windows
 {
-    auto Window::create(const std::string_view title) -> void
+    auto Window::create(const core::window::configuration& configuration) -> void
     {
          register_class();
+         register_style(configuration);
 
-        _style |= WS_OVERLAPPEDWINDOW;
+         constexpr auto frame_x = CW_USEDEFAULT;
+         constexpr auto frame_y = CW_USEDEFAULT;
+                   auto frame_w = configuration.width;
+                   auto frame_h = configuration.height;
 
-        _hwnd = CreateWindowEx(_extra, MAKEINTATOM(_id), title.data(), _style, CW_USEDEFAULT, CW_USEDEFAULT, 1280, 720, nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
+         if (configuration.fullscreen == false)
+         {
+             RECT frame
+             {
+                 0, 0, configuration.width,
+                       configuration.height
+             };
+
+             AdjustWindowRectEx(&frame, _style, false, _extra);
+
+             frame_w = frame.right  - frame.left;
+             frame_h = frame.bottom - frame.top;
+         }
+
+        _hwnd = CreateWindowEx(_extra, MAKEINTATOM(_id), configuration.title.data(),
+                               _style, frame_x, frame_y, frame_w, frame_h,  nullptr,  nullptr,
+                                                            GetModuleHandle(nullptr), nullptr);
     }
 
     auto Window::destroy() const -> void
@@ -48,5 +68,22 @@ namespace windows
     auto Window::unregister_class() const -> void
     {
         UnregisterClass(MAKEINTATOM(_id), GetModuleHandle(nullptr));
+    }
+
+    auto Window::register_style(const core::window::configuration& configuration) -> void
+    {
+        if (configuration.fullscreen == false)
+        {
+            if (configuration.maximized)
+            {
+                _style |= WS_MAXIMIZE;
+            }
+
+            _style |= WS_OVERLAPPEDWINDOW;
+        }
+        else
+        {
+            _style |= WS_POPUPWINDOW;
+        }
     }
 }

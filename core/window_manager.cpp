@@ -2,10 +2,10 @@
 
 namespace core
 {
-    auto WindowManager::init(const std::unique_ptr<base::PlatformFactory>& factory) -> void
+    auto WindowManager::init(const std::unique_ptr<base::PlatformFactory>& factory, const window::configuration& configuration) -> void
     {
         _window = factory->create_window();
-        _window->create("Platforms Framework");
+        _window->create(configuration);
 
         _window_context = factory->create_window_context();
         _window_context->create(_window, 4);
