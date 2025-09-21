@@ -12,12 +12,12 @@ namespace core
 
         auto pressed(input::code code) const -> bool;
 
-        auto input_actions() -> InputActions&;
+        auto input_actions()  -> InputActions&;
 
     private:
         input::states_changes _states_changes;
         input::states_values  _states_values;
 
-        InputActions _input_actions;
+        InputActions    _input_actions;
     };
 }
