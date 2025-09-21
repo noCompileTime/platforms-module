@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <any>
+#include <array>
 #include <chrono>
 #include <functional>
 #include <memory>
