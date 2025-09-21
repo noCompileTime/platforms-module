@@ -44,6 +44,11 @@ namespace windows
         return _hwnd;
     }
 
+    auto Window::title(const std::string_view title) const -> void
+    {
+        SetWindowText(_hwnd, title.data());
+    }
+
     auto Window::show() const -> void
     {
         ShowWindow(_hwnd, SW_SHOW);
