@@ -68,7 +68,7 @@ namespace windows
             constants::flags,         constants::no_error,
             0
         };
-                       _hrc = functions::create_context_attribs(_hdc, nullptr, context_attributes.data());
+                             _hrc = functions::create_context_attribs(_hdc, nullptr, context_attributes.data());
         wglMakeCurrent(_hdc, _hrc);
     }
 
