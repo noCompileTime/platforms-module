@@ -94,6 +94,19 @@ namespace windows
 
                 return 0;
             }
+            case WM_SIZE:
+            {
+                if (const auto window_events  = static_cast<WindowEvents*>(GetProp(hwnd, "events"));
+                               window_events && window_events->callbacks.on_resize)
+                {
+                    const auto width  = LOWORD(lparam);
+                    const auto height = HIWORD(lparam);
+
+                    window_events->callbacks.on_resize(width, height);
+                }
+
+                return 0;
+            }
             case WM_ERASEBKGND:
             {
                 return 1;
