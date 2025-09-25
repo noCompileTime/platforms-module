@@ -1,7 +1,6 @@
 #pragma once
 
 #include "input_actions.hpp"
-#include "input_mouse.hpp"
 
 namespace core
 {
@@ -13,14 +12,12 @@ namespace core
 
         auto pressed(input::code code) const -> bool;
 
-        auto input_actions()  -> InputActions&;
-        auto input_mouse  ()  -> InputMouse&;
+        auto input_actions() -> InputActions&;
 
     private:
         input::states_changes _states_changes;
         input::states_values  _states_values;
 
-        InputActions    _input_actions;
-        InputMouse      _input_mouse;
+        InputActions _input_actions;
     };
 }
