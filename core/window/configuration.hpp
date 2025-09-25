@@ -11,7 +11,7 @@ namespace core::window
         int32_t     samples { };
 
         bool     fullscreen { };
-        bool     maximized  { };
+        bool      maximized { };
 
         bool samples_buffer { };
         bool    srgb_buffer { };
