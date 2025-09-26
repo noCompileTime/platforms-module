@@ -6,6 +6,6 @@ namespace core::window
     {
         pixel_format_not_available,
         pixel_format_not_supported,
-        pixel_format_not_found,
+        pixel_format_not_found
     };
 }
