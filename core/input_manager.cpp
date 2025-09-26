@@ -42,9 +42,4 @@ namespace core
     {
         return _input_actions;
     }
-
-    auto InputManager::input_mouse() -> InputMouse&
-    {
-        return _input_mouse;
-    }
 }
