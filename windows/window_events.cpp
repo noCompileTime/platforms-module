@@ -72,6 +72,29 @@ namespace windows
 
                 break;
             }
+            case WM_MOUSEMOVE:
+            {
+                if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, "input"));
+                               window_input && window_input->callbacks.on_mouse_move)
+                {
+                    const auto x = LOWORD(lparam);
+                    const auto y = HIWORD(lparam);
+
+                    window_input->callbacks.on_mouse_move(x, y);
+                }
+
+                break;
+            }
+            case WM_MOUSEWHEEL:
+            {
+                if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, "input"));
+                               window_input && window_input->callbacks.on_mouse_scroll)
+                {
+                    const auto delta = GET_WHEEL_DELTA_WPARAM(wparam) / WHEEL_DELTA;
+
+                        window_input->callbacks.on_mouse_scroll(delta);
+                }
+            }
             case WM_CREATE:
             {
                 SetThreadExecutionState(ES_CONTINUOUS | ES_DISPLAY_REQUIRED);
