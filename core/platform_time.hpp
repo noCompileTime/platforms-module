@@ -2,9 +2,10 @@
 
 namespace core
 {
+    using time_seconds = std::chrono::duration<float>;
+
     using time_clock   = std::chrono::high_resolution_clock;
     using time_point   = std::chrono::high_resolution_clock::time_point;
-    using time_seconds = std::chrono::duration<float>;
 
     class PlatformTime
     {

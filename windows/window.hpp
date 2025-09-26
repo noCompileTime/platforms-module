@@ -6,7 +6,7 @@ namespace windows
     {
     public:
         auto  create(const core::window::configuration& configuration) -> void override;
-        auto destroy()                                           const -> void override;
+        auto destroy()                                          const  -> void override;
 
         auto   title(std::string_view title) const -> void override;
         auto    show()                       const -> void override;

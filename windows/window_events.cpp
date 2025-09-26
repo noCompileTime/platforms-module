@@ -122,8 +122,8 @@ namespace windows
                 if (const auto window_events  = static_cast<WindowEvents*>(GetProp(hwnd, "events"));
                                window_events && window_events->callbacks.on_resize)
                 {
-                    const auto width  = LOWORD(lparam);
-                    const auto height = HIWORD(lparam);
+                    const auto width  =  LOWORD(lparam);
+                    const auto height =  HIWORD(lparam);
 
                     window_events->callbacks.on_resize(width, height);
                 }
