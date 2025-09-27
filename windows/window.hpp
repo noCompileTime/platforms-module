@@ -8,10 +8,10 @@ namespace windows
         auto  create(const core::window::configuration& configuration) -> void override;
         auto destroy()                                          const  -> void override;
 
-        auto   title(std::string_view title) const -> void override;
-        auto    show()                       const -> void override;
+        auto  handle()                       const -> std::any override;
 
-        auto  handle() const -> std::any override;
+        auto   title(std::string_view title) const ->     void override;
+        auto    show()                       const ->     void override;
 
     private:
         auto   register_class()           -> void;
