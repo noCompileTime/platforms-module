@@ -75,12 +75,12 @@ namespace windows
             case WM_MOUSEMOVE:
             {
                 if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, "input"));
-                               window_input && window_input->callbacks.on_mouse_move)
+                               window_input && window_input->callbacks.on_mouse_motion)
                 {
                     const auto x = LOWORD(lparam);
                     const auto y = HIWORD(lparam);
 
-                    window_input->callbacks.on_mouse_move(x, y);
+                    window_input->callbacks.on_mouse_motion(x, y);
                 }
 
                 break;
