@@ -2,7 +2,7 @@
 
 namespace windows::constants
 {
-           /* pixel attributes */
+        /* pixel attributes */
 
     constexpr auto      acceleration = 0x2003;
     constexpr auto full_acceleration = 0x2027;
@@ -21,7 +21,7 @@ namespace windows::constants
     constexpr auto        depth_bits = 0x2022;
     constexpr auto      stencil_bits = 0x2023;
 
-           /* context attributes */
+        /* context attributes */
 
     constexpr auto  core_profile = 0x00000001;
     constexpr auto    no_error   = 0x00000008;
