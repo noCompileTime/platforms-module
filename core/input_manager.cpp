@@ -42,9 +42,4 @@ namespace core
     {
         return _input_actions;
     }
-
-    auto InputManager::actions() -> InputActions&
-    {
-        return _actions;
-    }
 }

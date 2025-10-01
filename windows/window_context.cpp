@@ -5,57 +5,6 @@
 
 namespace windows
 {
-    auto WindowContext::create(const core::base::window_ptr& window, int32_t samples) -> void
-    {
-        const std::array pixel_attributes
-        {
-            constants::draw_to_window, 1,
-            constants::support_opengl, 1,
-            constants::double_buffer, 1,
-            constants::acceleration, constants::full_acceleration,
-            constants::color_type, constants::rgba,
-            constants::color_bits, 32,
-            constants::depth_bits, 24,
-            constants::stencil_bits, 8,
-            constants::srgb_buffer, 0,
-            constants::samples_buffer, 1,
-            constants::samples, samples,
-            0
-        };
-
-        _hdc = GetDC(std::any_cast<HWND>(window->handle()));
-
-             int32_t format;
-        if (uint32_t formats; !functions::choose_pixel_format(_hdc, pixel_attributes.data(), nullptr, 1, &format, &formats) || !formats)
-        {
-            std::exit(core::window::status::pixel_format_not_found);
-        }
-
-        PIXELFORMATDESCRIPTOR pfd;
-
-        if (!DescribePixelFormat(_hdc, format, sizeof(PIXELFORMATDESCRIPTOR), &pfd))
-        {
-            std::exit(core::window::status::pixel_format_not_supported);
-        }
-
-        if (!SetPixelFormat(_hdc, format, &pfd))
-        {
-            std::exit(core::window::status::pixel_format_not_available);
-        }
-
-        const std::array context_attributes
-        {
-            constants::major_version, 4,
-            constants::minor_version, 6,
-            constants::profile, constants::core_profile,
-            constants::flags, constants::no_error,
-            0
-        };
-
-        _hrc = functions::create_context_attribs(_hdc, nullptr, context_attributes.data());
-                wglMakeCurrent(_hdc, _hrc);
-    }
-
     auto WindowContext::create(const core::base::window_ptr& window) -> void
     {
         constexpr PIXELFORMATDESCRIPTOR pfd
