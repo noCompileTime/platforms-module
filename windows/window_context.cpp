@@ -1,8 +1,5 @@
 #include "window_context.hpp"
 
-#include "constants/window_context.hpp"
-#include "functions/window_context.hpp"
-
 namespace windows
 {
     auto WindowContext::create(const core::base::window_ptr& window) -> void

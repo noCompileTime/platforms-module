@@ -1,7 +1,5 @@
 #include "platform_functions.hpp"
 
-#include "functions/window_context.hpp"
-
 namespace windows
 {
     auto PlatformFunctions::init_window_context_functions() -> void
