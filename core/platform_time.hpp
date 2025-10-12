@@ -10,7 +10,7 @@ namespace core
     class PlatformTime
     {
     public:
-        auto   init() -> void;
+        auto  start() -> void;
         auto update() -> void;
 
         static auto delta_time() -> float;

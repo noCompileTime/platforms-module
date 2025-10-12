@@ -2,9 +2,10 @@
 
 namespace core
 {
-    auto PlatformTime::init() -> void
+    auto PlatformTime::start() -> void
     {
-        _current_time = _start_time = time_clock::now();
+          _start_time =
+        _current_time = time_clock::now();
     }
 
     auto PlatformTime::update() -> void
