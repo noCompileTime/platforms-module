@@ -8,7 +8,7 @@ namespace core
         _current_time = time_clock::now();
     }
 
-    auto PlatformTime::update() -> void
+    auto PlatformTime::tick() -> void
     {
            const auto   current_time = time_clock::now();
 
