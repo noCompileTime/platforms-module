@@ -9,7 +9,7 @@ namespace core::base
 
         virtual ~PlatformMonitor()  = default;
 
-        int32_t  width  { };
+        int32_t  width  { }; // TODO add a getter for this? - just to be safe?
         int32_t  height { };
     };
 }
