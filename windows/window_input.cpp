@@ -20,6 +20,11 @@ namespace windows
         codes[VK_MBUTTON] = core::input::code::btn_middle;
         codes[VK_RBUTTON] = core::input::code::btn_right;
 
+        codes[VK_UP]      = core::input::code::key_up;
+        codes[VK_DOWN]    = core::input::code::key_down;
+        codes[VK_LEFT]    = core::input::code::key_left;
+        codes[VK_RIGHT]   = core::input::code::key_right;
+
         codes[VK_ESCAPE]  = core::input::code::key_escape;
         codes[VK_SPACE]   = core::input::code::key_space;
         codes[VK_TAB]     = core::input::code::key_tab;

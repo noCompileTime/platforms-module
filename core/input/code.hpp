@@ -9,6 +9,11 @@ namespace core::input
         key_s,
         key_d,
 
+        key_up,
+        key_down,
+        key_left,
+        key_right,
+
         key_space,
         key_escape,
         key_tab,
