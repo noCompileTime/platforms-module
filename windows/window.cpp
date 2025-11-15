@@ -77,7 +77,7 @@ namespace windows
 
     auto Window::register_style(const core::window::configuration& configuration) -> void
     {
-        if (configuration.fullscreen == false)
+        if (!configuration.fullscreen)
         {
             if (configuration.maximized)
             {

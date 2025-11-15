@@ -18,9 +18,9 @@ namespace core
                WindowManager() = default;
 
     private:
-        std::unique_ptr<base::Window>        _window;
         std::unique_ptr<base::WindowContext> _window_context;
         std::unique_ptr<base::WindowEvents>  _window_events;
         std::unique_ptr<base::WindowInput>   _window_input;
+        std::unique_ptr<base::Window>        _window;
     };
 }
