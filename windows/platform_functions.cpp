@@ -2,6 +2,11 @@
 
 namespace windows
 {
+    auto PlatformFunctions::init() -> void
+    {
+        SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+    }
+
     auto PlatformFunctions::init_window_context_functions() -> void
     {
         functions::create_context_attribs = reinterpret_cast<functions::PFNWGLCREATECONTEXTATTRIBSPROC>(wglGetProcAddress("wglCreateContextAttribsARB"));

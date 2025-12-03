@@ -5,6 +5,7 @@ namespace core::base
     class PlatformFunctions
     {
     public:
+        virtual auto init()                          -> void = 0;
         virtual auto init_window_context_functions() -> void = 0;
 
         virtual ~PlatformFunctions() = default;

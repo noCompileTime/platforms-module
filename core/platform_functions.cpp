@@ -15,5 +15,7 @@ namespace core
 
         window_context->destroy();
         window        ->destroy();
+
+       platform_functions->init();
     }
 }
