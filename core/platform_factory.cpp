@@ -1,4 +1,5 @@
-#include         "platform_factory.hpp"
+#include "platform_factory.hpp"
+
 #include "windows/platform_factory.hpp"
 
 namespace core
