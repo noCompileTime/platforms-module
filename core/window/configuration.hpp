@@ -13,7 +13,6 @@ namespace core::window
         bool     fullscreen { };
         bool      maximized { };
 
-        bool samples_buffer { };
         bool    srgb_buffer { };
     };
 }

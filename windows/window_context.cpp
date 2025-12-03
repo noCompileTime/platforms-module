@@ -34,7 +34,7 @@ namespace windows
             constants::depth_bits,     24,
             constants::stencil_bits,    8,
             constants::srgb_buffer,     configuration.   srgb_buffer ? 1 : 0,
-            constants::samples_buffer,  configuration.samples_buffer ? 1 : 0,
+            constants::samples_buffer,  configuration.samples > 0    ? 1 : 0,
             constants::samples,         configuration.samples,
             0
         };
