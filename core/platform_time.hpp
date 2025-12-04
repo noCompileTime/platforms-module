@@ -13,16 +13,16 @@ namespace core
         auto start() -> void;
         auto  tick() -> void;
 
-        static auto delta_time() -> float;
-        static auto total_time() -> float;
+        static auto elapsed_time() -> float;
+        static auto   delta_time() -> float;
 
     private:
         static constexpr auto max_delta_time { 1.0f / 30.0f };
 
+        inline  static   auto  _elapsed_time { 0.0f };
         inline  static   auto    _delta_time { 0.0f };
-        inline  static   auto    _total_time { 0.0f };
 
-        time_point   _start_time { };
         time_point _current_time { };
+        time_point   _start_time { };
     };
 }

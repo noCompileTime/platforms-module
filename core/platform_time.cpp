@@ -10,9 +10,9 @@ namespace core
 
     auto PlatformTime::tick() -> void
     {
-           const auto   current_time = time_clock::now();
+           const auto current_time = time_clock::now();
 
-          _total_time = time_seconds(current_time -   _start_time).count();
+        _elapsed_time = time_seconds(current_time -   _start_time).count();
           _delta_time = time_seconds(current_time - _current_time).count();
 
         _current_time = current_time;
@@ -23,13 +23,13 @@ namespace core
         }
     }
 
+    auto PlatformTime::elapsed_time() -> float
+    {
+        return _elapsed_time;
+    }
+
     auto PlatformTime::delta_time() -> float
     {
         return _delta_time;
-    }
-
-    auto PlatformTime::total_time() -> float
-    {
-        return _total_time;
     }
 }
