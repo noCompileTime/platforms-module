@@ -2,34 +2,34 @@
 
 namespace core
 {
-    auto PlatformTime::start() -> void
+    auto PlatformTime::start() noexcept -> void
     {
-          _start_time =
-        _current_time = time_clock::now();
+          _start_t =
+        _current_t = time_clock::now();
     }
 
-    auto PlatformTime::tick() -> void
+    auto PlatformTime::tick() noexcept -> void
     {
-           const auto current_time = time_clock::now();
+            const auto current_t = time_clock::now();
 
-        _elapsed_time = time_seconds(current_time -   _start_time).count();
-          _delta_time = time_seconds(current_time - _current_time).count();
+          _elapsed_t = time_seconds(current_t -   _start_t).count();
+            _delta_t = time_seconds(current_t - _current_t).count();
 
-        _current_time = current_time;
+          _current_t = current_t;
 
-        if (_delta_time > max_delta_time)
+        if (_delta_t > max_delta_t)
         {
-            _delta_time = max_delta_time;
+            _delta_t = max_delta_t;
         }
     }
 
-    auto PlatformTime::elapsed_time() -> float
+    auto PlatformTime::elapsed() noexcept -> float
     {
-        return _elapsed_time;
+        return _elapsed_t;
     }
 
-    auto PlatformTime::delta_time() -> float
+    auto PlatformTime::delta() noexcept -> float
     {
-        return _delta_time;
+        return _delta_t;
     }
 }

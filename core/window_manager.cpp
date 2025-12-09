@@ -4,7 +4,7 @@
 
 namespace core
 {
-    auto WindowManager::init(const std::unique_ptr<base::PlatformFactory>& factory, const window::configuration& configuration) -> void
+    auto WindowManager::init(const std::unique_ptr<base::PlatformFactory>& factory, const window::configuration& configuration) noexcept -> void
     {
          PlatformFunctions::init(factory);
 
@@ -21,7 +21,7 @@ namespace core
         _window_input->init(_window);
     }
 
-    auto WindowManager::release() const -> void
+    auto WindowManager::release() const noexcept -> void
     {
         _window_events->release(_window);
         _window_input ->release(_window);
@@ -30,27 +30,27 @@ namespace core
         _window        ->destroy();
     }
 
-    auto WindowManager::update() const -> void
+    auto WindowManager::update() const noexcept -> void
     {
         _window_events->update();
     }
 
-    auto WindowManager::window() const -> base::Window&
+    auto WindowManager::window() const noexcept -> base::Window&
     {
         return *_window;
     }
 
-    auto WindowManager::window_context() const -> base::WindowContext&
+    auto WindowManager::window_context() const noexcept -> base::WindowContext&
     {
         return *_window_context;
     }
 
-    auto WindowManager::window_events() const -> base::WindowEvents&
+    auto WindowManager::window_events() const noexcept -> base::WindowEvents&
     {
         return *_window_events;
     }
 
-    auto WindowManager::window_input() const -> base::WindowInput&
+    auto WindowManager::window_input() const noexcept -> base::WindowInput&
     {
         return *_window_input;
     }

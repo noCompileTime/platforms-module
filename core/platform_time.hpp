@@ -10,19 +10,19 @@ namespace core
     class PlatformTime
     {
     public:
-        auto start() -> void;
-        auto  tick() -> void;
+        auto start() noexcept -> void;
+        auto  tick() noexcept -> void;
 
-        static auto elapsed_time() -> float;
-        static auto   delta_time() -> float;
+        static auto elapsed() noexcept -> float;
+        static auto   delta() noexcept -> float;
 
     private:
-        static constexpr auto max_delta_time { 1.0f / 30.0f };
+        static constexpr auto max_delta_t { 1.0f / 30.0f };
 
-           inline static auto  _elapsed_time { 0.0f };
-           inline static auto    _delta_time { 0.0f };
+           inline static auto  _elapsed_t { 0.0f };
+           inline static auto    _delta_t { 0.0f };
 
-                    time_point _current_time { };
-                    time_point   _start_time { };
+                    time_point _current_t { };
+                    time_point   _start_t { };
     };
 }
