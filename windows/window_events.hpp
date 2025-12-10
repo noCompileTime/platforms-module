@@ -14,5 +14,8 @@ namespace windows
     private:
         static auto process_btn_message(HWND hwnd, uint32_t code, core::input::state state) -> void;
         static auto process_key_message(HWND hwnd,   WPARAM code, core::input::state state) -> void;
+
+        static constexpr auto events_prop_key = "events";
+        static constexpr auto  input_prop_key = "input";
     };
 }
