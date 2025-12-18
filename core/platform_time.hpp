@@ -17,10 +17,10 @@ namespace core
         static auto   delta() noexcept -> float;
 
     private:
-        static constexpr auto max_delta_t { 1.0f / 30.0f };
+        static constexpr auto max_delta_t = 1.0f / 30.0f;
 
-           inline static auto  _elapsed_t { 0.0f };
-           inline static auto    _delta_t { 0.0f };
+           inline static auto  _elapsed_t = 0.0f;
+           inline static auto    _delta_t = 0.0f;
 
                     time_point _current_t { };
                     time_point   _start_t { };
