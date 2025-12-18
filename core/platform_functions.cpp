@@ -2,7 +2,7 @@
 
 namespace core
 {
-    auto PlatformFunctions::init(const std::unique_ptr<base::PlatformFactory>& factory) -> void
+    auto PlatformFunctions::init(const std::unique_ptr<base::PlatformFactory>& factory) noexcept -> void
     {
         const auto window = factory->create_window();
                    window->create({ "base_window_context" });

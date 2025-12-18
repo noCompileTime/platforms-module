@@ -3,17 +3,17 @@
 
 namespace windows
 {
-    auto WindowEvents::init(const core::base::window_ptr& window) -> void
+    auto WindowEvents::init(const core::base::window_ptr& window) noexcept -> void
     {
         SetProp(std::any_cast<HWND>(window->handle()), events_prop_key, this);
     }
 
-    auto WindowEvents::release(const core::base::window_ptr& window) const -> void
+    auto WindowEvents::release(const core::base::window_ptr& window) const noexcept -> void
     {
         RemoveProp(std::any_cast<HWND>(window->handle()), events_prop_key);
     }
 
-    auto WindowEvents::update() const -> void
+    auto WindowEvents::update() const noexcept -> void
     {
         MSG msg;
 

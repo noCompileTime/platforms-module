@@ -38,7 +38,7 @@ namespace core
             return iterator != _states_values.current.end() && iterator->second == input::state::pressed;
     }
 
-    auto InputManager::input_actions() -> InputActions&
+    auto InputManager::input_actions() noexcept -> InputActions&
     {
         return _input_actions;
     }
