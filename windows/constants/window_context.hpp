@@ -2,7 +2,7 @@
 
 namespace windows::constants
 {
-        /* pixel attributes */
+          /* pixel attributes */
 
     constexpr auto      acceleration = 0x2003;
     constexpr auto full_acceleration = 0x2027;

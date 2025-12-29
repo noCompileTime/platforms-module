@@ -42,7 +42,7 @@ namespace windows
         _hdc = GetDC(std::any_cast<HWND>(window->handle()));
 
              int32_t format;
-        if (uint32_t formats; functions::choose_pixel_format(_hdc, pixel_attributes.data(), nullptr, 1, &format, &formats) == 0 || formats == 0)
+        if (uint32_t formats; functions::wglChoosePixelFormat(_hdc, pixel_attributes.data(), nullptr, 1, &format, &formats) == 0 || formats == 0)
         {
             std::exit(core::window::status::pixel_format_not_found);
         }
@@ -65,7 +65,7 @@ namespace windows
             constants::flags,         constants::  no_error,
             0
         };
-                             _hrc = functions::create_context_attribs(_hdc, nullptr, context_attributes.data());
+                             _hrc = functions::wglCreateContextAttribs(_hdc, nullptr, context_attributes.data());
         wglMakeCurrent(_hdc, _hrc);
     }
 
@@ -82,6 +82,6 @@ namespace windows
 
     auto WindowContext::sync(const int32_t interval) const -> void
     {
-        functions::swap_interval(interval);
+        functions::wglSwapInterval(interval);
     }
 }
