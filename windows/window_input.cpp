@@ -2,19 +2,19 @@
 
 namespace windows
 {
-    auto WindowInput::init(const core::base::window_ptr& window) -> void
+    auto WindowInput::init(const std::unique_ptr<core::base::Window>& window) noexcept -> void
     {
         SetProp(std::any_cast<HWND>(window->handle()), "input", this);
 
         init_codes();
     }
 
-    auto WindowInput::release(const core::base::window_ptr& window) const -> void
+    auto WindowInput::release(const std::unique_ptr<core::base::Window>& window) const noexcept -> void
     {
         RemoveProp(std::any_cast<HWND>(window->handle()), "input");
     }
 
-    auto WindowInput::init_codes() -> void
+    auto WindowInput::init_codes() noexcept -> void
     {
         codes[VK_LBUTTON] = core::input::code::btn_left;
         codes[VK_MBUTTON] = core::input::code::btn_middle;

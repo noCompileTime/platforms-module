@@ -2,7 +2,7 @@
 
 namespace windows
 {
-    auto WindowContext::create(const core::base::window_ptr& window) -> void
+    auto WindowContext::create(const std::unique_ptr<core::base::Window>& window) noexcept -> void
     {
         constexpr PIXELFORMATDESCRIPTOR pfd
         {
@@ -21,7 +21,7 @@ namespace windows
                  wglMakeCurrent(_hdc, _hrc);
     }
 
-    auto WindowContext::create(const core::base::window_ptr& window, const core::window::configuration& configuration) -> void
+    auto WindowContext::create(const std::unique_ptr<core::base::Window>& window, const core::window::configuration& configuration) noexcept -> void
     {
         const std::array pixel_attributes
         {
@@ -42,7 +42,8 @@ namespace windows
         _hdc = GetDC(std::any_cast<HWND>(window->handle()));
 
              int32_t format;
-        if (uint32_t formats; functions::wglChoosePixelFormat(_hdc, pixel_attributes.data(), nullptr, 1, &format, &formats) == 0 || formats == 0)
+        if (uint32_t formats; functions::wglChoosePixelFormat(_hdc, pixel_attributes.data(), nullptr, 1, &format, &formats) == 0 ||
+                     formats == 0)
         {
             std::exit(core::window::status::pixel_format_not_found);
         }
@@ -52,7 +53,7 @@ namespace windows
             std::exit(core::window::status::pixel_format_not_supported);
         }
 
-        if (SetPixelFormat(_hdc, format, &pfd) == false)
+        if (!SetPixelFormat(_hdc, format, &pfd))
         {
             std::exit(core::window::status::pixel_format_not_available);
         }
@@ -69,18 +70,18 @@ namespace windows
         wglMakeCurrent(_hdc, _hrc);
     }
 
-    auto WindowContext::destroy() const -> void
+    auto WindowContext::destroy() const noexcept -> void
     {
           wglMakeCurrent( nullptr, nullptr);
         wglDeleteContext(_hrc);
     }
 
-    auto WindowContext::update() const -> void
+    auto WindowContext::update() const noexcept -> void
     {
         SwapBuffers(_hdc);
     }
 
-    auto WindowContext::sync(const int32_t interval) const -> void
+    auto WindowContext::sync(const int32_t interval) const noexcept -> void
     {
         functions::wglSwapInterval(interval);
     }

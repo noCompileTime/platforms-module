@@ -5,6 +5,6 @@ namespace windows
     class PlatformMonitor final : public core::base::PlatformMonitor
     {
     public:
-        auto init() -> void override;
+        auto init() noexcept -> void override;
     };
 }

@@ -3,7 +3,7 @@
 
 namespace windows
 {
-    auto Window::create(const core::window::configuration& configuration) -> void
+    auto Window::create(const core::window::configuration& configuration) noexcept -> void
     {
          register_class();
          register_style(configuration);
@@ -32,29 +32,29 @@ namespace windows
                                                             GetModuleHandle(nullptr), nullptr);
     }
 
-    auto Window::destroy() const -> void
+    auto Window::destroy() const noexcept -> void
     {
         DestroyWindow(_hwnd);
 
         unregister_class();
     }
 
-    auto Window::handle() const -> std::any
+    auto Window::handle() const noexcept -> std::any
     {
         return _hwnd;
     }
 
-    auto Window::title(const std::string_view title) const -> void
+    auto Window::title(const std::string_view title) const noexcept -> void
     {
         SetWindowText(_hwnd, title.data());
     }
 
-    auto Window::show() const -> void
+    auto Window::show() const noexcept -> void
     {
         ShowWindow(_hwnd, SW_SHOW);
     }
 
-    auto Window::register_class() -> void
+    auto Window::register_class() noexcept -> void
     {
          const WNDCLASSEX classex
          {
@@ -70,25 +70,25 @@ namespace windows
         _id = RegisterClassEx(&classex);
     }
 
-    auto Window::unregister_class() const -> void
+    auto Window::unregister_class() const noexcept -> void
     {
         UnregisterClass(MAKEINTATOM(_id), GetModuleHandle(nullptr));
     }
 
-    auto Window::register_style(const core::window::configuration& configuration) -> void
+    auto Window::register_style(const core::window::configuration& configuration) noexcept -> void
     {
-        if (!configuration.fullscreen)
+        if (configuration.fullscreen)
         {
+            _style |= WS_POPUPWINDOW;
+        }
+        else
+        {
+            _style |= WS_OVERLAPPEDWINDOW;
+
             if (configuration.maximized)
             {
                 _style |= WS_MAXIMIZE;
             }
-
-            _style |= WS_OVERLAPPEDWINDOW;
-        }
-        else
-        {
-            _style |= WS_POPUPWINDOW;
         }
     }
 }

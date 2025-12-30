@@ -20,7 +20,7 @@ namespace core::base
             return _height;
         }
 
-    private:
+    protected:
         int32_t _width;
         int32_t _height;
     };

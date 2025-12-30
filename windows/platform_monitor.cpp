@@ -2,7 +2,7 @@
 
 namespace windows
 {
-    auto PlatformMonitor::init() -> void
+    auto PlatformMonitor::init() noexcept -> void
     {
             const auto monitor = MonitorFromWindow(nullptr, MONITOR_DEFAULTTOPRIMARY);
 
@@ -11,7 +11,7 @@ namespace windows
 
         GetMonitorInfo(monitor, &monitor_info);
 
-              width  = monitor_info.rcMonitor.right  - monitor_info.rcMonitor.left;
-              height = monitor_info.rcMonitor.bottom - monitor_info.rcMonitor.top;
+             _width  = monitor_info.rcMonitor.right  - monitor_info.rcMonitor.left;
+             _height = monitor_info.rcMonitor.bottom - monitor_info.rcMonitor.top;
     }
 }

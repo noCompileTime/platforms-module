@@ -5,7 +5,7 @@ namespace windows
     class PlatformFunctions final : public core::base::PlatformFunctions
     {
     public:
-        auto init()                          -> void override;
-        auto init_window_context_functions() -> void override;
+        auto init()                          noexcept -> void override;
+        auto init_window_context_functions() noexcept -> void override;
     };
 }
