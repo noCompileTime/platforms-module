@@ -29,13 +29,13 @@ namespace windows
         return std::make_unique<WindowInput>();
     }
 
-    auto PlatformFactory::create_platform_monitor() const noexcept -> std::unique_ptr<core::base::PlatformMonitor>
-    {
-        return std::make_unique<PlatformMonitor>();
-    }
-
     auto PlatformFactory::create_platform_functions() const noexcept -> std::unique_ptr<core::base::PlatformFunctions>
     {
         return std::make_unique<PlatformFunctions>();
+    }
+
+    auto PlatformFactory::create_platform_monitor() const noexcept -> std::unique_ptr<core::base::PlatformMonitor>
+    {
+        return std::make_unique<PlatformMonitor>();
     }
 }

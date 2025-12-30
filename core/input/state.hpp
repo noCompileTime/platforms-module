@@ -4,6 +4,8 @@ namespace core::input
 {
     enum class state
     {
-        released, pressed, unknown
+        released,
+        pressed,
+        unknown
     };
 }

@@ -7,10 +7,10 @@ namespace core
     class InputManager
     {
     public:
-        auto  update()                                     -> void;
-        auto  update(input::code code, input::state state) -> void;
+        auto  update()                                     noexcept -> void;
+        auto  update(input::code code, input::state state) noexcept -> void;
 
-        auto pressed(input::code code) const -> bool;
+        auto pressed(input::code code) const noexcept -> bool;
 
         auto input_actions() noexcept -> InputActions&;
 

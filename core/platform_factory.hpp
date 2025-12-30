@@ -5,6 +5,6 @@ namespace core
     class PlatformFactory
     {
     public:
-        static auto create() -> std::unique_ptr<base::PlatformFactory>;
+        static auto create() noexcept -> std::unique_ptr<base::PlatformFactory>;
     };
 }
