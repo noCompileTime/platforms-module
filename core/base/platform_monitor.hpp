@@ -5,11 +5,23 @@ namespace core::base
     class PlatformMonitor
     {
     public:
-        virtual auto init() -> void = 0;
+                 PlatformMonitor() = default;
+        virtual ~PlatformMonitor() = default;
 
-        virtual ~PlatformMonitor()  = default;
+        virtual auto init() noexcept -> void = 0;
 
-        int32_t  width  { }; // TODO add a getter for this? - just to be safe?
-        int32_t  height { };
+        auto  width() const noexcept -> int32_t
+        {
+            return _width;
+        }
+
+        auto height() const noexcept -> int32_t
+        {
+            return _height;
+        }
+
+    private:
+        int32_t _width;
+        int32_t _height;
     };
 }
