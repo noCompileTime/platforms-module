@@ -12,7 +12,7 @@ namespace windows
 
         _hdc = GetDC(std::any_cast<HWND>(window->handle()));
 
-        if (SetPixelFormat(_hdc, ChoosePixelFormat(_hdc, &pfd), &pfd) == false)
+        if (!SetPixelFormat(_hdc, ChoosePixelFormat(_hdc, &pfd), &pfd))
         {
             std::exit(core::window::status::pixel_format_not_available);
         }

@@ -13,7 +13,7 @@ namespace windows
                    auto frame_w = configuration.width;
                    auto frame_h = configuration.height;
 
-         if (configuration.fullscreen == false)
+         if (!configuration.fullscreen)
          {
              RECT frame
              {

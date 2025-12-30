@@ -1,7 +1,5 @@
 #pragma once
 
-#include <array>
-
 #include <windows.h>
 
 #include "constants/window_context.hpp"

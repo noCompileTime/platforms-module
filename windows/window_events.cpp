@@ -101,6 +101,7 @@ namespace windows
             }
             case WM_CREATE:
             {
+                // this code is used to manage the system's power state
                 SetThreadExecutionState(ES_CONTINUOUS | ES_DISPLAY_REQUIRED);
 
                 break;
@@ -158,7 +159,7 @@ namespace windows
         }
     }
 
-    auto WindowEvents::process_key_message(const HWND hwnd, const WPARAM code, const core::input::state state) -> void
+    auto WindowEvents::process_key_message(const HWND hwnd, const uint32_t code, const core::input::state state) -> void
     {
         if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
                        window_input && window_input->callbacks.on_key_press)

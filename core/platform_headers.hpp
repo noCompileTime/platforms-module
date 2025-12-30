@@ -1,10 +1,12 @@
 #pragma once
 
-#include <algorithm>
 #include <any>
+#include <array>
 #include <chrono>
-#include <functional>
 #include <memory>
+
+#include <algorithm>
+#include <functional>
 
 #include "input/action.hpp"
 #include "input/state_changes.hpp"

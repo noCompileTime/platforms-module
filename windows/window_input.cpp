@@ -4,9 +4,9 @@ namespace windows
 {
     auto WindowInput::init(const core::base::window_ptr& window) -> void
     {
-        init_codes();
-
         SetProp(std::any_cast<HWND>(window->handle()), "input", this);
+
+        init_codes();
     }
 
     auto WindowInput::release(const core::base::window_ptr& window) const -> void
