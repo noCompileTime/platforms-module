@@ -63,7 +63,7 @@ namespace windows
             constants::major_version, 4,
             constants::minor_version, 6,
             constants::profile,       constants::core_profile,
-            constants::flags,         constants::  no_error,
+            constants::flags,         constants::no_error,
             0
         };
                              _hrc = functions::wglCreateContextAttribs(_hdc, nullptr, context_attributes.data());
