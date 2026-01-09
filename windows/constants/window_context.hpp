@@ -15,8 +15,8 @@ namespace windows::constants
     constexpr auto    draw_to_window = 0x2001;
     constexpr auto    support_opengl = 0x2010;
 
-    constexpr auto        color_type = 0x2013;
     constexpr auto              rgba = 0x202b;
+    constexpr auto        color_type = 0x2013;
     constexpr auto        color_bits = 0x2014;
     constexpr auto        depth_bits = 0x2022;
     constexpr auto      stencil_bits = 0x2023;
