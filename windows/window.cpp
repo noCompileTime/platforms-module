@@ -59,7 +59,7 @@ namespace windows
          const WNDCLASSEX classex
          {
              .cbSize        = sizeof(WNDCLASSEX),
-             .style         = CS_OWNDC, // CS_HREDRAW | CS_VREDRAW - we don't need to force window repaint on resize
+             .style         = CS_OWNDC,  // CS_HREDRAW | CS_VREDRAW - we don't need to force window repaint on resize
              .lpfnWndProc   = WindowEvents::process_any_message,
              .hInstance     = GetModuleHandle(nullptr),
              .hIcon         = LoadIcon       (nullptr, IDI_APPLICATION),
