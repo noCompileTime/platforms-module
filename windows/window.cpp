@@ -39,11 +39,6 @@ namespace windows
         unregister_class();
     }
 
-    auto Window::handle() const noexcept -> std::any
-    {
-        return _hwnd;
-    }
-
     auto Window::title(const std::string_view title) const noexcept -> void
     {
         SetWindowText(_hwnd, title.data());
@@ -52,6 +47,11 @@ namespace windows
     auto Window::show() const noexcept -> void
     {
         ShowWindow(_hwnd, SW_SHOW);
+    }
+
+    auto Window::handle() const noexcept -> std::any
+    {
+        return _hwnd;
     }
 
     auto Window::register_class() noexcept -> void
