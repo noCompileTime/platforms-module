@@ -1,3 +1,5 @@
+#include "functions/window_context.hpp"
+
 #include "platform_functions.hpp"
 
 namespace windows

@@ -1,3 +1,6 @@
+#include "constants/window_context.hpp"
+#include "functions/window_context.hpp"
+
 #include "window_context.hpp"
 
 namespace windows
