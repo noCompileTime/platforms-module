@@ -1,13 +1,5 @@
 #pragma once
 
-#include <any>
-#include <array>
-#include <chrono>
-#include <memory>
-
-#include <algorithm>
-#include <functional>
-
 #include "input/action.hpp"
 #include "input/state_changes.hpp"
 #include "input/state_values.hpp"
