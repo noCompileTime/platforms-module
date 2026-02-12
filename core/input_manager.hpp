@@ -15,7 +15,7 @@ namespace core
         auto input_actions() noexcept -> InputActions&;
 
     private:
-        input::state_changes _state_changes;
+        input::state_changes _state_changes; // TODO a single struct to hold the InputState? both changes and values
         input::state_values  _state_values;
 
         InputActions _input_actions;
