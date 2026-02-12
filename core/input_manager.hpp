@@ -15,8 +15,8 @@ namespace core
         auto input_actions() noexcept -> InputActions&;
 
     private:
-        input::states_changes _states_changes;
-        input::states_values  _states_values;
+        input::state_changes _state_changes;
+        input::state_values  _state_values;
 
         InputActions _input_actions;
     };

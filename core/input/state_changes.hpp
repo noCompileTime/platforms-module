@@ -4,5 +4,5 @@
 
 namespace core::input
 {
-    using states_changes = std::vector<code>;
+    using state_changes = std::vector<code>;
 }
