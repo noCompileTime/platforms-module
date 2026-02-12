@@ -57,13 +57,13 @@ namespace windows
     {
          const WNDCLASSEX classex
          {
-             .cbSize        = sizeof(WNDCLASSEX),
-             .style         = CS_OWNDC,  // CS_HREDRAW | CS_VREDRAW - we don't need to force window repaint on resize
-             .lpfnWndProc   = WindowEvents::process_any_message,
-             .hInstance     = GetModuleHandle(nullptr),
-             .hIcon         = LoadIcon       (nullptr, IDI_APPLICATION),
-             .hCursor       = LoadCursor     (nullptr, IDC_ARROW),
-             .lpszClassName = "game_engine_window"
+             .cbSize        =  sizeof(WNDCLASSEX),
+             .style         =  CS_OWNDC,  // CS_HREDRAW | CS_VREDRAW - we don't need to force window repaint on resize
+             .lpfnWndProc   =  WindowEvents::process_any_message,
+             .hInstance     =  GetModuleHandle(nullptr),
+             .hIcon         =  LoadIcon       (nullptr, IDI_APPLICATION),
+             .hCursor       =  LoadCursor     (nullptr, IDC_ARROW),
+             .lpszClassName = "game_window"
          };
 
         _id = RegisterClassEx(&classex);
