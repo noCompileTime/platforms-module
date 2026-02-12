@@ -28,8 +28,7 @@ namespace windows
          }
 
         _hwnd = CreateWindowEx(_extra, MAKEINTATOM(_id), configuration.title.data(),
-                               _style, frame_x, frame_y, frame_w, frame_h,  nullptr,  nullptr,
-                                                            GetModuleHandle(nullptr), nullptr);
+                               _style, frame_x, frame_y, frame_w, frame_h,  nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
     }
 
     auto Window::destroy() const noexcept -> void
