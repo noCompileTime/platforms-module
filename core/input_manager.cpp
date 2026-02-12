@@ -9,7 +9,7 @@ namespace core
             _input_actions.execute(change);
         }
 
-        _states_changes.clear();
+        _states_changes.clear(); // TODO maybe mark them as executed? to not make clear again and again?
     }
 
     auto InputManager::update(const input::code code, const input::state state) noexcept -> void
