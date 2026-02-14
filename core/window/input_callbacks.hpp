@@ -2,7 +2,7 @@
 
 namespace core::window
 {
-    struct input_callbacks
+    struct input_callbacks // TODO add a callbacks folder and namespace?
     {
         std::function<void(input::code btn, input::state state)> on_btn_press { };
         std::function<void(input::code key, input::state state)> on_key_press { };
