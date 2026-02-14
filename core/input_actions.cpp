@@ -2,7 +2,7 @@
 
 namespace core
 {
-    auto InputActions::set_action(const input::code code, const input::action& action) noexcept -> void
+    auto InputActions::assign(const input::code code, const input::action& action) noexcept -> void
     {
         _actions[code] = action;
     }
