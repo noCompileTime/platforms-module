@@ -12,7 +12,7 @@ namespace core
 
         auto pressed(input::code code) const noexcept -> bool;
 
-        auto input_actions() noexcept -> InputActions&;
+        auto input_actions() noexcept -> InputActions&; // TODO maybe rename this to actions?
 
     private:
         input::state_changes _state_changes; // TODO a single struct to hold the InputState? both changes and values
