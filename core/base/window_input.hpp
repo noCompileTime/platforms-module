@@ -12,7 +12,7 @@ namespace core::base
         virtual auto release(const std::unique_ptr<Window>& window) const noexcept -> void = 0;
 
         window::input_callbacks callbacks;
-        window::input_codes     codes;
+        window::input_codes     codes; // TODO this should be protected somehow
 
     private:
         virtual auto init_codes() noexcept -> void = 0;
