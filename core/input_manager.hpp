@@ -1,6 +1,7 @@
 #pragma once
 
 #include "input_actions.hpp"
+#include "input_state.hpp"
 
 namespace core
 {
@@ -12,12 +13,11 @@ namespace core
 
         auto pressed(input::code code)   const noexcept -> bool;
 
-        auto input_actions() noexcept -> InputActions&; // TODO maybe rename this to actions?
+        auto input_actions() noexcept -> InputActions&;
+        auto input_state()   noexcept -> InputState&;
 
     private:
-        input::state_changes _state_changes; // TODO a single struct to hold the InputState? both changes and values
-        input::state_values  _state_values;
-
         InputActions _input_actions;
+        InputState   _input_state;
     };
 }
