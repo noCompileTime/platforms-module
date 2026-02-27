@@ -5,9 +5,11 @@ namespace core
     class InputState
     {
     public:
-        auto update(input::code code, input::state state) noexcept -> void;
+        auto update(input::code code, input::state active) noexcept -> void;
 
-        input::state_changes _changes;
-        input::state_values  _values;
+        std::unordered_map<input::code, input::state> _active;
+        std::unordered_map<input::code, input::state> _before;
+
+        std::vector<input::code> _changes;
     };
 }

@@ -2,13 +2,11 @@
 
 namespace core
 {
-    auto InputState::update(const input::code code, const input::state state) noexcept -> void
+    auto InputState::update(const input::code code, const input::state active) noexcept -> void
     {
-        const auto previous_state = std::exchange(_values.current [code],           state); // TODO rename the state and previous_state variables
-                                                  _values.previous[code] = previous_state;
+        const auto before = std::exchange(_active[code], active); _before[code] = before;
 
-        if (previous_state == input::state::released &&
-                     state == input::state::pressed)
+        if (before == input::state::released && active == input::state::pressed)
         {
             if (!std::ranges::contains(_changes, code))
             {

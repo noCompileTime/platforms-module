@@ -1,8 +1,8 @@
 #pragma once
 
 #include "input/action.hpp"
-#include "input/state_changes.hpp"
-#include "input/state_values.hpp"
+#include "input/code.hpp"
+#include "input/state.hpp"
 
 #include "window/configuration.hpp"
 #include "window/events_callbacks.hpp"
