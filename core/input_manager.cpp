@@ -4,7 +4,7 @@ namespace core
 {
     auto InputManager::update() noexcept -> void
     {
-        for (const auto& change : _state._changes)
+        for (const auto& change : _state._changes) // TODO add begin/end pt state sa putem pune changes private?
         {
             _actions.execute(change);
         }
