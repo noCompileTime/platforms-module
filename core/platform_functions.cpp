@@ -7,15 +7,15 @@ namespace core
         const auto window = factory->create_window();
                    window->create({ "base_window_context" });
 
-        const auto window_context = factory->create_window_context();
-                   window_context->create(window);
+        const auto context = factory->create_window_context();
+                   context->create(window);
 
-        const auto platform_functions = factory->create_platform_functions();
-                   platform_functions->init_window_context_functions();
+        const auto functions = factory->create_platform_functions();
+                   functions->init_window_context_functions();
 
-        window_context->destroy();
-        window        ->destroy();
+        context->destroy();
+        window ->destroy();
 
-       platform_functions->init();
+        functions->init();
     }
 }

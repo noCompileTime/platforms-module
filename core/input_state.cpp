@@ -4,7 +4,7 @@ namespace core
 {
     auto InputState::update(const input::code code, const input::state state) noexcept -> void
     {
-        const auto previous_state = std::exchange(_values.current [code],           state);
+        const auto previous_state = std::exchange(_values.current [code],           state); // TODO rename the state and previous_state variables
                                                   _values.previous[code] = previous_state;
 
         if (previous_state == input::state::released &&
