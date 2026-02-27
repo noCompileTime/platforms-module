@@ -11,28 +11,28 @@ namespace core
         _window = factory->create_window();
         _window->create(configuration);
 
-        _window_context = factory->create_window_context();
-        _window_context->create(_window, configuration);
+        _context = factory->create_window_context();
+        _context->create(_window, configuration);
 
-        _window_events = factory->create_window_events();
-        _window_events->init(_window);
+        _events = factory->create_window_events();
+        _events->init(_window);
 
-        _window_input = factory->create_window_input();
-        _window_input->init(_window);
+        _input = factory->create_window_input();
+        _input->init(_window);
     }
 
     auto WindowManager::release() const noexcept -> void
     {
-        _window_events->release(_window);
-        _window_input ->release(_window);
+        _events->release(_window);
+        _input ->release(_window);
 
-        _window_context->destroy();
-        _window        ->destroy();
+        _context->destroy();
+        _window ->destroy();
     }
 
     auto WindowManager::update() const noexcept -> void
     {
-        _window_events->update();
+        _events->update();
     }
 
     auto WindowManager::window() const noexcept -> base::Window&
@@ -40,18 +40,18 @@ namespace core
         return *_window;
     }
 
-    auto WindowManager::window_context() const noexcept -> base::WindowContext&
+    auto WindowManager::context() const noexcept -> base::WindowContext&
     {
-        return *_window_context;
+        return *_context;
     }
 
-    auto WindowManager::window_events() const noexcept -> base::WindowEvents&
+    auto WindowManager::events() const noexcept -> base::WindowEvents&
     {
-        return *_window_events;
+        return *_events;
     }
 
-    auto WindowManager::window_input() const noexcept -> base::WindowInput&
+    auto WindowManager::input() const noexcept -> base::WindowInput&
     {
-        return *_window_input;
+        return *_input;
     }
 }
