@@ -8,8 +8,7 @@ namespace core
     class InputManager
     {
     public:
-        auto pressed(input::code code) const noexcept -> bool;
-        auto  update()                       noexcept -> void;
+        auto  update() noexcept -> void;
 
         auto actions() noexcept -> InputActions&;
         auto   state() noexcept -> InputState&;
