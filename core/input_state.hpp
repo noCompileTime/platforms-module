@@ -10,6 +10,16 @@ namespace core
         auto active(input::code code) const noexcept -> input::state;
         auto before(input::code code) const noexcept -> input::state;
 
+        auto begin() const noexcept
+        {
+            return _changes.begin();
+        }
+
+        auto end() const noexcept
+        {
+            return _changes.end();
+        }
+
         std::vector<input::code> _changes;
 
     private:
