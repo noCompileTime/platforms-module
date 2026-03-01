@@ -20,7 +20,7 @@ namespace core
             return _changes.end();
         }
 
-        std::vector<input::code> _changes;
+        std::vector<input::code> _changes; // TODO make this private somehow
 
     private:
         std::unordered_map<input::code, input::state> _active;
