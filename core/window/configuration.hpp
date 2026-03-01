@@ -4,15 +4,15 @@ namespace core::window
 {
     struct configuration
     {
-        std::string_view  title;
+        std::string_view title;
 
-        int32_t     width   { };
-        int32_t     height  { };
-        int32_t     samples { };
+        int32_t    width   { };
+        int32_t    height  { };
+        int32_t    samples { };
 
-        bool     fullscreen { };
-        bool      maximized { };
+        bool    fullscreen { };
+        bool     maximized { };
 
-        bool    srgb_buffer { };
+        bool  srgb_buffer  { };
     };
 }
