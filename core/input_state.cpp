@@ -7,7 +7,8 @@ namespace core
         const auto before = std::exchange(_active[code] , active);
                                           _before[code] = before;
 
-        if (before == input::state::released && active == input::state::pressed)
+        if (active == input::state::pressed &&
+            before == input::state::released)
         {
             if (!std::ranges::contains(_changes, code))
             {
@@ -18,11 +19,21 @@ namespace core
 
     auto InputState::active(const input::code code) const noexcept -> input::state
     {
-        return _active.at(code);
+        if (_active.contains(code))
+        {
+            return _active.at(code);
+        }
+
+        return input::state::unknown;
     }
 
     auto InputState::before(const input::code code) const noexcept -> input::state
     {
-        return _before.at(code);
+        if (_before.contains(code))
+        {
+            return _before.at(code);
+        }
+
+        return input::state::unknown;
     }
 }
