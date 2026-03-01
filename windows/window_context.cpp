@@ -35,8 +35,7 @@ namespace windows
             constants::stencil_bits,    8,
             constants::srgb_buffer,     configuration.srgb_buffer ? 1 : 0,
             constants::samples_buffer,  configuration.samples > 0 ? 1 : 0,
-            constants::samples,         configuration.samples,
-            0
+            constants::samples,         configuration.samples,  0
         };
 
         _hdc = GetDC(std::any_cast<HWND>(window->handle()));
@@ -58,7 +57,7 @@ namespace windows
             std::exit(core::window::status::pixel_format_not_available);
         }
 
-        constexpr std::array context_attributes
+        const std::array context_attributes
         {
             constants::major_version, 4,
             constants::minor_version, 6,
