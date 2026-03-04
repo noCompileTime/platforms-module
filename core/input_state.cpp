@@ -2,22 +2,7 @@
 
 namespace core
 {
-    auto InputState::update(const input::code code, const input::state active) noexcept -> void
-    {
-        const auto before = std::exchange(_active[code] , active);
-                                          _before[code] = before;
-
-        if (active == input::state::pressed &&
-            before == input::state::released)
-        {
-            if (!std::ranges::contains(_changes, code))
-            {
-                _changes.emplace_back(code);
-            }
-        }
-    }
-
-    auto InputState::active(const input::code code) const noexcept -> input::state
+    auto InputState::pressed(const input::code code) const noexcept -> input::state
     {
         if (_active.contains(code))
         {
@@ -27,13 +12,16 @@ namespace core
         return input::state::unknown;
     }
 
-    auto InputState::before(const input::code code) const noexcept -> input::state
+    auto InputState::update(const input::code code, const input::state active) noexcept -> void
     {
-        if (_before.contains(code))
+        if (const auto before =  std::exchange(_active[code], active);
+                       before == input::state::released &&
+                       active == input::state::pressed)
         {
-            return _before.at(code);
+            if (!std::ranges::contains(_changes, code))
+            {
+                _changes.emplace_back(code);
+            }
         }
-
-        return input::state::unknown;
     }
 }
