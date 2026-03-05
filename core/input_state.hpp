@@ -5,9 +5,9 @@ namespace core
     class InputState
     {
     public:
-        auto pressed(input::code code) const noexcept -> input::state;
+        auto  update(input::code code, input::state state) noexcept -> void;
 
-        auto  update(input::code code, input::state active) noexcept -> void;
+        auto pressed(input::code code) const noexcept -> input::state;
 
         auto begin() const noexcept  { return _changes.begin(); }
         auto   end() const noexcept  { return _changes.end(); }
@@ -15,6 +15,6 @@ namespace core
         std::vector<input::code> _changes; // TODO make this private somehow
 
     private:
-        std::unordered_map<input::code, input::state> _active;
+        std::unordered_map<input::code, input::state> _states;
     };
 }
