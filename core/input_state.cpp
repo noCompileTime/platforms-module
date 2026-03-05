@@ -14,13 +14,9 @@ namespace core
         }
     }
 
-    auto InputState::pressed(const input::code code) const noexcept -> input::state
+    auto InputState::pressed(const input::code code) const noexcept -> bool
     {
-        if (_states.contains(code))
-        {
-            return _states.at(code);
-        }
-
-        return input::state::unknown;
+        const auto iterator  = _states.find(code);
+            return iterator != _states.end() && iterator->second == input::state::pressed;
     }
 }

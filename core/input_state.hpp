@@ -7,7 +7,7 @@ namespace core
     public:
         auto  update(input::code code, input::state state) noexcept -> void;
 
-        auto pressed(input::code code) const noexcept -> input::state;
+        auto pressed(input::code code) const noexcept -> bool;
 
         auto begin() const noexcept  { return _changes.begin(); }
         auto   end() const noexcept  { return _changes.end(); }
