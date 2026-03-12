@@ -2,13 +2,12 @@
 
 namespace windows::functions
 {
-    using  PFNWGLCREATECONTEXTATTRIBSPROC = auto(WINAPI*)(HDC hdc, HGLRC, const int32_t*)                                              -> HGLRC; // TODO add the parameters name
-    using  PFNWGLCHOOSEPIXELFORMATPROC    = auto(WINAPI*)(HDC hdc,        const int32_t*, const float*, uint32_t, int32_t*, uint32_t*) -> int32_t;
-
-    using  PFNWGLSWAPINTERVALPROC         = auto(WINAPI*)(int32_t) -> int32_t;
-
+     using PFNWGLCREATECONTEXTATTRIBSPROC = HGLRC(WINAPI*)(HDC hdc, HGLRC share_context, const int32_t* attribs);
     inline PFNWGLCREATECONTEXTATTRIBSPROC wglCreateContextAttribs;
-    inline PFNWGLCHOOSEPIXELFORMATPROC    wglChoosePixelFormat;
 
-    inline PFNWGLSWAPINTERVALPROC         wglSwapInterval;
+     using PFNWGLCHOOSEPIXELFORMATPROC = int32_t(WINAPI*)(HDC hdc, const int32_t* int_attribs, const float* float_attribs, uint32_t max_formats, int32_t* formats, uint32_t* num_formats);
+    inline PFNWGLCHOOSEPIXELFORMATPROC wglChoosePixelFormat;
+
+     using PFNWGLSWAPINTERVALPROC = int32_t(WINAPI*)(int32_t interval);
+    inline PFNWGLSWAPINTERVALPROC wglSwapInterval;
 }
