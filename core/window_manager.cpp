@@ -37,21 +37,21 @@ namespace core
 
     auto WindowManager::context() const noexcept -> base::WindowContext&
     {
-        return *_context;
+        return *_context; // TODO as a pointer?
     }
 
     auto WindowManager::events() const noexcept -> base::WindowEvents&
     {
-        return *_events;
+        return *_events; // TODO as a pointer?
     }
 
     auto WindowManager::input() const noexcept -> base::WindowInput&
     {
-        return *_input;
+        return *_input; // TODO as a pointer?
     }
 
     auto WindowManager::window() const noexcept -> base::Window&
     {
-        return *_window;
+        return *_window; // TODO as a pointer?
     }
 }
