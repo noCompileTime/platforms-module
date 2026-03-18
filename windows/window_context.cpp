@@ -33,7 +33,7 @@ namespace windows
             constants::color_bits,     32,
             constants::depth_bits,     24,
             constants::stencil_bits,    8,
-            constants::srgb_buffer,     configuration.srgb_buffer ? 1 : 0,
+            constants::srgb_buffer,     configuration.srgb        ? 1 : 0,
             constants::samples_buffer,  configuration.samples > 0 ? 1 : 0,
             constants::samples,         configuration.samples,  0
         };
@@ -61,9 +61,9 @@ namespace windows
         {
             constants::major_version, 4,
             constants::minor_version, 6,
-            constants::profile,       constants::core_profile,
-            constants::flags,         constants::no_error_bit,
-            0
+            constants::profile,                     constants::core_profile,
+            constants::flags, configuration.debug ? constants::debug_bit :
+                                                    constants::no_error_bit, 0
         };
                              _hrc = functions::wglCreateContextAttribs(_hdc, nullptr, context_attributes.data());
         wglMakeCurrent(_hdc, _hrc);
