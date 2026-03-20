@@ -11,9 +11,9 @@ namespace core::base
         virtual auto  create(const window::configuration& configuration) noexcept -> void = 0;
         virtual auto destroy()                                     const noexcept -> void = 0;
 
-        virtual auto  title(std::string_view title) const noexcept -> void = 0;
-        virtual auto   show()                       const noexcept -> void = 0;
+        virtual auto title(std::string_view title) const noexcept -> void = 0;
+        virtual auto  show()                       const noexcept -> void = 0;
 
-        virtual auto handle() const noexcept -> std::any = 0; // TODO this as an operator or something?
+        [[nodiscard]] virtual auto handle() const noexcept -> std::any = 0; // TODO this as an operator or something?
     };
 }
