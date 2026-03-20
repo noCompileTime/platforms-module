@@ -3,22 +3,22 @@
 
 namespace windows
 {
-    auto Window::create(const core::window::configuration& configuration) noexcept -> void
+    auto Window::create(const core::window::settings& settings) noexcept -> void
     {
          register_class();
-         register_style(configuration);
+         register_style(settings);
 
          constexpr auto frame_x = CW_USEDEFAULT;
          constexpr auto frame_y = CW_USEDEFAULT;
-                   auto frame_w = configuration.width;
-                   auto frame_h = configuration.height;
+                   auto frame_w = settings.width;
+                   auto frame_h = settings.height;
 
-         if (!configuration.fullscreen)
+         if (!settings.fullscreen)
          {
              RECT frame
              {
-                 0, 0, configuration.width,
-                       configuration.height
+                 0, 0, settings.width,
+                       settings.height
              };
 
              AdjustWindowRectEx(&frame, _style, FALSE, _extra);
@@ -27,7 +27,7 @@ namespace windows
              frame_h = frame.bottom - frame.top;
          }
 
-        _hwnd = CreateWindowEx(_extra, MAKEINTATOM(_id), configuration.title.data(),
+        _hwnd = CreateWindowEx(_extra, MAKEINTATOM(_id), settings.title.data(),
                                _style, frame_x, frame_y, frame_w, frame_h,  nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
     }
 
@@ -74,9 +74,9 @@ namespace windows
         UnregisterClass(MAKEINTATOM(_id), GetModuleHandle(nullptr));
     }
 
-    auto Window::register_style(const core::window::configuration& configuration) noexcept -> void
+    auto Window::register_style(const core::window::settings& settings) noexcept -> void
     {
-        if (configuration.fullscreen)
+        if (settings.fullscreen)
         {
             _style |= WS_POPUPWINDOW;
         }
@@ -84,7 +84,7 @@ namespace windows
         {
             _style |= WS_OVERLAPPEDWINDOW;
 
-            if (configuration.maximized)
+            if (settings.maximized)
             {
                 _style |= WS_MAXIMIZE;
             }

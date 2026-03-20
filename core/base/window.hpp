@@ -8,8 +8,8 @@ namespace core::base
                  Window() = default;
         virtual ~Window() = default;
 
-        virtual auto  create(const window::configuration& configuration) noexcept -> void = 0;
-        virtual auto destroy()                                     const noexcept -> void = 0;
+        virtual auto  create(const window::settings& settings) noexcept -> void = 0;
+        virtual auto destroy()                           const noexcept -> void = 0;
 
         virtual auto title(std::string_view title) const noexcept -> void = 0;
         virtual auto  show()                       const noexcept -> void = 0;

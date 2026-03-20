@@ -4,15 +4,15 @@
 
 namespace core
 {
-    auto WindowManager::init(const std::unique_ptr<base::PlatformFactory>& factory, const window::configuration& configuration) noexcept -> void
+    auto WindowManager::init(const std::unique_ptr<base::PlatformFactory>& factory, const window::settings& settings) noexcept -> void
     {
          PlatformFunctions::init(factory);
 
         _window = factory->create_window();
-        _window->create(configuration);
+        _window->create(settings);
 
         _context = factory->create_window_context();
-        _context->create(_window, configuration);
+        _context->create(_window, settings);
 
         _events = factory->create_window_events();
         _events->init(_window);

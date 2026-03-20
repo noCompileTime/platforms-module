@@ -2,7 +2,7 @@
 
 namespace core::window
 {
-    struct configuration
+    struct settings
     {
         std::string_view title;
 

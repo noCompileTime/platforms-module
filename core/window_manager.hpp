@@ -7,7 +7,7 @@ namespace core
     public:
         WindowManager() = default;
 
-        auto init(const std::unique_ptr<base::PlatformFactory>& factory, const window::configuration& configuration) noexcept -> void;
+        auto init(const std::unique_ptr<base::PlatformFactory>& factory, const window::settings& settings) noexcept -> void;
 
         auto release()  const noexcept -> void;
         auto  update()  const noexcept -> void;

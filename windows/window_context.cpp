@@ -21,7 +21,7 @@ namespace windows
                  wglMakeCurrent(_hdc, _hrc);
     }
 
-    auto WindowContext::create(const std::unique_ptr<core::base::Window>& window, const core::window::configuration& configuration) noexcept -> void
+    auto WindowContext::create(const std::unique_ptr<core::base::Window>& window, const core::window::settings& settings) noexcept -> void
     {
         const std::array pixel_attributes
         {
@@ -33,9 +33,9 @@ namespace windows
             constants::color_bits,     32,
             constants::depth_bits,     24,
             constants::stencil_bits,    8,
-            constants::srgb_buffer,     configuration.srgb        ? 1 : 0,
-            constants::samples_buffer,  configuration.samples > 0 ? 1 : 0,
-            constants::samples,         configuration.samples,  0
+            constants::srgb_buffer,     settings.srgb        ? 1 : 0,
+            constants::samples_buffer,  settings.samples > 0 ? 1 : 0,
+            constants::samples,         settings.samples,  0
         };
 
         _hdc = GetDC(std::any_cast<HWND>(window->handle()));
@@ -61,9 +61,9 @@ namespace windows
         {
             constants::major_version, 4,
             constants::minor_version, 6,
-            constants::profile,                     constants::core_profile,
-            constants::flags, configuration.debug ? constants::debug_bit :
-                                                    constants::no_error_bit, 0
+            constants::profile,                constants::core_profile,
+            constants::flags, settings.debug ? constants::debug_bit :
+                                               constants::no_error_bit, 0
         };
                              _hrc = functions::wglCreateContextAttribs(_hdc, nullptr, context_attributes.data());
         wglMakeCurrent(_hdc, _hrc);
@@ -80,7 +80,7 @@ namespace windows
         SwapBuffers(_hdc);
     }
 
-    auto WindowContext::sync(const int32_t interval) const noexcept -> void
+    auto WindowContext::vsync(const int32_t interval) const noexcept -> void
     {
         functions::wglSwapInterval(interval);
     }
