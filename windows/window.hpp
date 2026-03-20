@@ -6,10 +6,10 @@ namespace windows
     {
     public:
         auto  create(const core::window::configuration& configuration) noexcept -> void override;
-        auto destroy()                                          const  noexcept -> void override;
+        auto destroy()                                           const noexcept -> void override;
 
-        auto title(std::string_view title) const noexcept -> void override;
-        auto  show()                       const noexcept -> void override;
+        auto  title(std::string_view title) const noexcept -> void override;
+        auto   show()                       const noexcept -> void override;
 
         auto handle() const noexcept -> std::any override;
 
