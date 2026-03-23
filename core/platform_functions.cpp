@@ -11,7 +11,7 @@ namespace core
                    context->create(window);
 
         const auto functions = factory->create_platform_functions();
-                   functions->init_window_context_functions();
+                   functions->init_context_functions();
 
         context->destroy();
         window ->destroy();

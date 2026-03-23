@@ -4,10 +4,10 @@ namespace windows
 {
     auto PlatformFunctions::init() noexcept -> void
     {
-        SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+        SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2); // TODO move this inside the window??
     }
 
-    auto PlatformFunctions::init_window_context_functions() noexcept -> void
+    auto PlatformFunctions::init_context_functions() noexcept -> void
     {
         functions::wglCreateContextAttribs = reinterpret_cast<functions::PFNWGLCREATECONTEXTATTRIBSPROC>(wglGetProcAddress("wglCreateContextAttribsARB"));
         functions::wglChoosePixelFormat    = reinterpret_cast<functions::PFNWGLCHOOSEPIXELFORMATPROC>   (wglGetProcAddress("wglChoosePixelFormatARB"));
