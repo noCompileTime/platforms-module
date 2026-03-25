@@ -12,19 +12,19 @@ namespace core
         _window->create(settings);
 
         _context = factory->create_window_context();
-        _context->create(_window, settings);
+        _context->create(window(), settings);
 
         _events = factory->create_window_events();
-        _events->init(_window);
+        _events->init(window());
 
         _input = factory->create_window_input();
-        _input->init(_window);
+        _input->init(window());
     }
 
     auto WindowManager::release() const noexcept -> void
     {
-        _events->release(_window);
-        _input ->release(_window);
+        _events->release(window());
+        _input ->release(window());
 
         _context->destroy();
         _window ->destroy();
@@ -37,21 +37,21 @@ namespace core
 
     auto WindowManager::context() const noexcept -> base::WindowContext&
     {
-        return *_context; // TODO as a pointer?
+        return *_context;
     }
 
     auto WindowManager::events() const noexcept -> base::WindowEvents&
     {
-        return *_events; // TODO as a pointer?
+        return *_events;
     }
 
     auto WindowManager::input() const noexcept -> base::WindowInput&
     {
-        return *_input; // TODO as a pointer?
+        return *_input;
     }
 
     auto WindowManager::window() const noexcept -> base::Window&
     {
-        return *_window; // TODO as a pointer?
+        return *_window;
     }
 }

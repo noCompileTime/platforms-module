@@ -10,11 +10,10 @@ namespace core::base
 
         virtual auto init() noexcept -> void = 0;
 
-        [[nodiscard]] auto width() const noexcept
+        [[nodiscard]] auto  width() const noexcept
         {
             return _width;
         }
-
         [[nodiscard]] auto height() const noexcept
         {
             return _height;

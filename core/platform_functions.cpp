@@ -8,14 +8,14 @@ namespace core
                    window->create({ "base_window_context" });
 
         const auto context = factory->create_window_context();
-                   context->create(window);
+                   context->create(*window);
 
         const auto functions = factory->create_platform_functions();
                    functions->init_context_functions();
 
         context->destroy();
-        window ->destroy();
+         window->destroy();
 
-        functions->init();
+         functions->init();
     }
 }

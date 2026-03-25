@@ -5,8 +5,8 @@ namespace windows
     class WindowContext final : public core::base::WindowContext
     {
     public:
-        auto  create(const std::unique_ptr<core::base::Window>& window)                                         noexcept -> void override;
-        auto  create(const std::unique_ptr<core::base::Window>& window, const core::window::settings& settings) noexcept -> void override;
+        auto  create(const core::base::Window& window)                                         noexcept -> void override;
+        auto  create(const core::base::Window& window, const core::window::settings& settings) noexcept -> void override;
 
         auto destroy()                 const noexcept -> void override;
         auto  update()                 const noexcept -> void override;

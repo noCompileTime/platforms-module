@@ -2,7 +2,7 @@
 
 namespace windows
 {
-    auto WindowContext::create(const std::unique_ptr<core::base::Window>& window) noexcept -> void
+    auto WindowContext::create(const core::base::Window& window) noexcept -> void
     {
         constexpr PIXELFORMATDESCRIPTOR pfd
         {
@@ -10,7 +10,7 @@ namespace windows
             .dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER
         };
 
-        _hdc = GetDC(std::any_cast<HWND>(window->handle()));
+        _hdc = GetDC(std::any_cast<HWND>(window.handle()));
 
         if (!SetPixelFormat(_hdc, ChoosePixelFormat(_hdc, &pfd), &pfd))
         {
@@ -21,7 +21,7 @@ namespace windows
                  wglMakeCurrent(_hdc, _hrc);
     }
 
-    auto WindowContext::create(const std::unique_ptr<core::base::Window>& window, const core::window::settings& settings) noexcept -> void
+    auto WindowContext::create(const core::base::Window& window, const core::window::settings& settings) noexcept -> void
     {
         const std::array pixel_attributes
         {
@@ -38,7 +38,7 @@ namespace windows
             constants::samples,         settings.samples,  0
         };
 
-        _hdc = GetDC(std::any_cast<HWND>(window->handle()));
+        _hdc = GetDC(std::any_cast<HWND>(window.handle()));
 
              int32_t format;
         if (uint32_t formats; functions::wglChoosePixelFormat(_hdc, pixel_attributes.data(), nullptr, 1, &format, &formats) == 0 ||

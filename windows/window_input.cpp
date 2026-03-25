@@ -2,16 +2,16 @@
 
 namespace windows
 {
-    auto WindowInput::init(const std::unique_ptr<core::base::Window>& window) noexcept -> void
+    auto WindowInput::init(const core::base::Window& window) noexcept -> void
     {
-        SetProp(std::any_cast<HWND>(window->handle()), "input", this);
-
         init_codes();
+
+        SetProp(std::any_cast<HWND>(window.handle()), "input", this);
     }
 
-    auto WindowInput::release(const std::unique_ptr<core::base::Window>& window) const noexcept -> void
+    auto WindowInput::release(const core::base::Window& window) const noexcept -> void
     {
-        RemoveProp(std::any_cast<HWND>(window->handle()), "input");
+        RemoveProp(std::any_cast<HWND>(window.handle()), "input");
     }
 
     auto WindowInput::init_codes() noexcept -> void
