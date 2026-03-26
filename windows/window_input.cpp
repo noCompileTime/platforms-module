@@ -6,12 +6,12 @@ namespace windows
     {
         init_codes();
 
-        SetProp(std::any_cast<HWND>(window.handle()), "input", this);
+        SetProp(std::any_cast<HWND>(window.handle()), input_prop_key, this);
     }
 
     auto WindowInput::release(const core::base::Window& window) const noexcept -> void
     {
-        RemoveProp(std::any_cast<HWND>(window.handle()), "input");
+        RemoveProp(std::any_cast<HWND>(window.handle()), input_prop_key);
     }
 
     auto WindowInput::init_codes() noexcept -> void

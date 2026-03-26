@@ -75,7 +75,7 @@ namespace windows
             case WM_MOUSEMOVE:
             {
                 if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
-                               window_input && window_input->callbacks.on_mouse_motion)
+                               window_input->callbacks.on_mouse_motion)
                 {
                     const auto x = static_cast<short>(LOWORD(lparam));
                     const auto y = static_cast<short>(HIWORD(lparam));
@@ -88,7 +88,7 @@ namespace windows
             case WM_MOUSEWHEEL:
             {
                 if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
-                               window_input && window_input->callbacks.on_mouse_scroll)
+                               window_input->callbacks.on_mouse_scroll)
                 {
                     const auto delta = GET_WHEEL_DELTA_WPARAM(wparam) / WHEEL_DELTA;
 
@@ -115,7 +115,7 @@ namespace windows
             case WM_CLOSE:
             {
                 if (const auto window_events  = static_cast<WindowEvents*>(GetProp(hwnd, events_prop_key));
-                               window_events && window_events->callbacks.on_close)
+                               window_events->callbacks.on_close)
                 {
                     window_events->callbacks.on_close();
                 }
@@ -125,7 +125,7 @@ namespace windows
             case WM_SIZE:
             {
                 if (const auto window_events  = static_cast<WindowEvents*>(GetProp(hwnd, events_prop_key));
-                               window_events && window_events->callbacks.on_resize)
+                               window_events->callbacks.on_resize)
                 {
                     const auto width  =  LOWORD(lparam);
                     const auto height =  HIWORD(lparam);
@@ -149,7 +149,7 @@ namespace windows
     auto WindowEvents::process_btn_message(const HWND hwnd, const uint32_t code, const core::input::state state) -> void
     {
         if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
-                       window_input && window_input->callbacks.on_btn_press)
+                       window_input->callbacks.on_btn_press)
         {
             if (const auto iterator  = window_input->codes.find(code);
                            iterator != window_input->codes.end())
@@ -159,10 +159,10 @@ namespace windows
         }
     }
 
-    auto WindowEvents::process_key_message(const HWND hwnd, const uint32_t code, const core::input::state state) -> void
+    auto WindowEvents::process_key_message(HWND hwnd, const uint32_t code, const core::input::state state) -> void
     {
-        if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
-                       window_input && window_input->callbacks.on_key_press)
+        if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
+                       window_input->callbacks.on_key_press)
         {
             if (const auto iterator  = window_input->codes.find(code);
                            iterator != window_input->codes.end())
