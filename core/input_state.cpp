@@ -5,8 +5,8 @@ namespace core
     auto InputState::update(const input::code code, const input::state state) noexcept -> void
     {
         if (const auto before =  std::exchange(_states[code], state);
-                       before == input::state::released && state == input::state::pressed)
-        {
+                       before == input::state::released && state == input::state::pressed) {
+
             if (!std::ranges::contains(_changes, code))
             {
                 _changes.emplace_back(code);
