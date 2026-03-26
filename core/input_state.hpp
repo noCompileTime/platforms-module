@@ -7,10 +7,16 @@ namespace core
     public:
         auto  update(input::code code, input::state state) noexcept -> void;
 
-        auto pressed(input::code code) const noexcept -> bool;
+        [[nodiscard]] auto pressed(input::code code) const noexcept -> bool;
 
-        auto begin() const noexcept  { return _changes.begin(); }
-        auto   end() const noexcept  { return _changes.end(); }
+        [[nodiscard]] auto begin() const noexcept
+        {
+            return _changes.begin();
+        }
+        [[nodiscard]] auto   end() const noexcept
+        {
+            return _changes.end();
+        }
 
         std::vector<input::code> _changes; // TODO make this private somehow
 

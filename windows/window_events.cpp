@@ -29,7 +29,7 @@ namespace windows
         }
     }
 
-    auto WindowEvents::process_any_message(const HWND hwnd, const UINT msg, const WPARAM wparam, const LPARAM lparam) -> LRESULT
+    auto WindowEvents::process_any_message(const HWND hwnd, const uint32_t msg, const WPARAM wparam, const LPARAM lparam) -> LRESULT
     {
         switch (msg)
         {
@@ -60,7 +60,7 @@ namespace windows
             {
                 if ((lparam & 1 << 30) == 0)
                 {
-                    process_key_message(hwnd, wparam, core::input::state::pressed);
+                    process_btn_message(hwnd, wparam, core::input::state::pressed);
                 }
 
                 break;
@@ -68,13 +68,13 @@ namespace windows
             case WM_KEYUP:
             case WM_SYSKEYUP:
             {
-                process_key_message(hwnd, wparam, core::input::state::released);
+                process_btn_message(hwnd, wparam, core::input::state::released);
 
                 break;
             }
             case WM_MOUSEMOVE:
             {
-                if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
+                if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
                                window_input->callbacks.on_mouse_motion)
                 {
                     const auto x = static_cast<short>(LOWORD(lparam));
@@ -87,7 +87,7 @@ namespace windows
             }
             case WM_MOUSEWHEEL:
             {
-                if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
+                if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
                                window_input->callbacks.on_mouse_scroll)
                 {
                     const auto delta = GET_WHEEL_DELTA_WPARAM(wparam) / WHEEL_DELTA;
@@ -114,7 +114,7 @@ namespace windows
             }
             case WM_CLOSE:
             {
-                if (const auto window_events  = static_cast<WindowEvents*>(GetProp(hwnd, events_prop_key));
+                if (const auto window_events = static_cast<WindowEvents*>(GetProp(hwnd, events_prop_key));
                                window_events->callbacks.on_close)
                 {
                     window_events->callbacks.on_close();
@@ -124,7 +124,7 @@ namespace windows
             }
             case WM_SIZE:
             {
-                if (const auto window_events  = static_cast<WindowEvents*>(GetProp(hwnd, events_prop_key));
+                if (const auto window_events = static_cast<WindowEvents*>(GetProp(hwnd, events_prop_key));
                                window_events->callbacks.on_resize)
                 {
                     const auto width  =  LOWORD(lparam);
@@ -148,26 +148,13 @@ namespace windows
 
     auto WindowEvents::process_btn_message(const HWND hwnd, const uint32_t code, const core::input::state state) -> void
     {
-        if (const auto window_input  = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
-                       window_input->callbacks.on_btn_press)
-        {
-            if (const auto iterator  = window_input->codes.find(code);
-                           iterator != window_input->codes.end())
-            {
-                window_input->callbacks.on_btn_press(iterator->second, state);
-            }
-        }
-    }
-
-    auto WindowEvents::process_key_message(HWND hwnd, const uint32_t code, const core::input::state state) -> void
-    {
         if (const auto window_input = static_cast<WindowInput*>(GetProp(hwnd, input_prop_key));
-                       window_input->callbacks.on_key_press)
+                       window_input->callbacks.on_btn_update)
         {
             if (const auto iterator  = window_input->codes.find(code);
                            iterator != window_input->codes.end())
             {
-                window_input->callbacks.on_key_press(iterator->second, state);
+                window_input->callbacks.on_btn_update(iterator->second, state);
             }
         }
     }

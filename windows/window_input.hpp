@@ -11,5 +11,5 @@ namespace windows
         auto release(const core::base::Window& window) const noexcept -> void override;
     };
 
-        static constexpr auto input_prop_key = "input_";
+    static constexpr auto input_prop_key = "input_";
 }
