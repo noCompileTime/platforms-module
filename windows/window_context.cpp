@@ -23,7 +23,7 @@ namespace windows
 
     auto WindowContext::create(const core::base::Window& window, const core::window::settings& settings) noexcept -> void
     {
-        const std::array pixel_attributes
+        const int32_t pixel_attributes[]
         {
             constants::draw_to_window, 1,
             constants::support_opengl, 1,
@@ -41,7 +41,7 @@ namespace windows
         _hdc = GetDC(std::any_cast<HWND>(window.handle()));
 
              int32_t format;
-        if (uint32_t formats; functions::wglChoosePixelFormat(_hdc, pixel_attributes.data(), nullptr, 1, &format, &formats) == 0 ||
+        if (uint32_t formats; functions::wglChoosePixelFormat(_hdc, pixel_attributes, nullptr, 1, &format, &formats) == 0 ||
                      formats == 0)
         {
             std::exit(core::window::status::pixel_format_not_found);
@@ -57,7 +57,7 @@ namespace windows
             std::exit(core::window::status::pixel_format_not_available);
         }
 
-        const std::array context_attributes
+        const int32_t context_attributes[]
         {
             constants::major_version, 4,
             constants::minor_version, 6,
@@ -65,7 +65,7 @@ namespace windows
             constants::flags, settings.debug ? constants::debug_bit :
                                                constants::no_error_bit, 0
         };
-                             _hrc = functions::wglCreateContextAttribs(_hdc, nullptr, context_attributes.data());
+                             _hrc = functions::wglCreateContextAttribs(_hdc, nullptr, context_attributes);
         wglMakeCurrent(_hdc, _hrc);
     }
 
