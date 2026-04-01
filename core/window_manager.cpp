@@ -6,7 +6,7 @@ namespace core
 {
     auto WindowManager::init(const std::unique_ptr<base::PlatformFactory>& factory, const window::settings& settings) noexcept -> void
     {
-         PlatformFunctions::init(factory);
+         PlatformFunctions::init(factory); // TODO remove when going to vulkan
 
         _window = factory->create_window();
         _window->create(settings);
