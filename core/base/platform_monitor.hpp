@@ -2,7 +2,7 @@
 
 namespace core::base
 {
-    class PlatformMonitor
+    class PlatformMonitor // TODO rename to WindowMonitor at some point
     {
     public:
                  PlatformMonitor() = default;

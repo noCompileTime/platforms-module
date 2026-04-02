@@ -2,7 +2,7 @@
 
 namespace core
 {
-    class PlatformFactory
+    class PlatformFactory // TODO rename this to WindowFactory at some point
     {
     public:
         static auto create() noexcept -> std::unique_ptr<base::PlatformFactory>;
