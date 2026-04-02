@@ -23,7 +23,7 @@ namespace windows
 
     auto WindowContext::create(const core::base::Window& window, const core::window::settings& settings) noexcept -> void
     {
-        const int32_t pixel_attributes[]
+        const int32_t pixel_attributes[] // TODO make it array again
         {
             constants::draw_to_window, 1,
             constants::support_opengl, 1,
@@ -57,7 +57,7 @@ namespace windows
             std::exit(core::window::status::pixel_format_not_available);
         }
 
-        const int32_t context_attributes[]
+        const int32_t context_attributes[] // TODO make it array again
         {
             constants::major_version, 4,
             constants::minor_version, 6,
