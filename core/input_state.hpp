@@ -5,7 +5,7 @@ namespace core
     class InputState
     {
     public:
-        auto  update(input::code code, input::state state) noexcept -> void;
+        auto update(input::code code, input::state new_state) noexcept -> void;
 
         [[nodiscard]] auto pressed(input::code code) const noexcept -> bool;
 
