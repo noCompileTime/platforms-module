@@ -20,7 +20,7 @@ namespace core::base
         }
 
     protected:
-        int32_t _width;
-        int32_t _height;
+        std::int32_t _width;
+        std::int32_t _height;
     };
 }
