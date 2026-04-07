@@ -21,7 +21,7 @@ namespace windows
                        settings.height
              };
 
-             AdjustWindowRectEx(&frame, _style, FALSE, _extra);
+             AdjustWindowRectEx(&frame, _style, 0, _extra);
 
              frame_w = frame.right  - frame.left;
              frame_h = frame.bottom - frame.top;
