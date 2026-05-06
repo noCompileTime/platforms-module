@@ -14,7 +14,7 @@ namespace core::base
         [[nodiscard]] auto height() const noexcept { return _height; }
 
     protected:
-        std::int32_t  _width;
-        std::int32_t _height;
+        int32_t  _width;
+        int32_t _height;
     };
 }
