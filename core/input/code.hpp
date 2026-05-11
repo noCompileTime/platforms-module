@@ -9,6 +9,10 @@ namespace core::input
         key_s,
         key_d,
 
+        key_1,
+        key_2,
+        key_3,
+
         key_up,
         key_down,
         key_left,

@@ -33,5 +33,9 @@ namespace windows
         codes['A']        = core::input::code::key_a;
         codes['S']        = core::input::code::key_s;
         codes['D']        = core::input::code::key_d;
+
+        codes['1']       = core::input::code::key_1;
+        codes['2']       = core::input::code::key_2;
+        codes['3']       = core::input::code::key_3;
     }
 }
