@@ -125,7 +125,7 @@ namespace windows
             case WM_SIZE:
             {
                 if (const auto window_events = static_cast<WindowEvents*>(GetProp(hwnd, events_prop_key));
-                               window_events->callbacks.on_resize)
+                               window_events && window_events->callbacks.on_resize)
                 {
                     const auto width  = LOWORD(lparam);
                     const auto height = HIWORD(lparam);
