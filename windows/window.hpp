@@ -19,8 +19,8 @@ namespace windows
 
         auto   register_style(const core::window::settings& settings) noexcept -> void;
 
-        std::uint32_t _style { WS_CLIPSIBLINGS | WS_CLIPCHILDREN };
-        std::uint32_t _extra { WS_EX_APPWINDOW };
+        uint32_t _style { WS_CLIPSIBLINGS | WS_CLIPCHILDREN };
+        uint32_t _extra { WS_EX_APPWINDOW };
 
         HWND _hwnd { };
         ATOM _id   { };
