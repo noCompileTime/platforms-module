@@ -11,6 +11,4 @@ namespace windows
     private:
         auto init_codes() noexcept -> void override;
     };
-
-    static constexpr auto input_prop_key = "input_";
 }
