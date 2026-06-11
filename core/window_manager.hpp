@@ -13,7 +13,7 @@ namespace core
         auto  update()  const noexcept -> void;
 
         [[nodiscard]] auto  window() const noexcept -> base::Window&;
-        [[nodiscard]] auto context() const noexcept -> base::WindowContext&;
+        [[nodiscard]] auto context() const noexcept -> base::WindowContext&; // TODO make this pointers? instead of references?
         [[nodiscard]] auto  events() const noexcept -> base::WindowEvents&;
         [[nodiscard]] auto   input() const noexcept -> base::WindowInput&;
 

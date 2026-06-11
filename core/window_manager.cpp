@@ -27,7 +27,7 @@ namespace core
         _input ->release(window());
 
         _context->destroy();
-        _window ->destroy();
+        _window->destroy();
     }
 
     auto WindowManager::update() const noexcept -> void
