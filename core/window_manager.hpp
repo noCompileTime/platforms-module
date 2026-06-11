@@ -12,10 +12,10 @@ namespace core
         auto release()  const noexcept -> void;
         auto  update()  const noexcept -> void;
 
-        auto  window()  const noexcept -> base::Window&;
-        auto context()  const noexcept -> base::WindowContext&;
-        auto  events()  const noexcept -> base::WindowEvents&;
-        auto   input()  const noexcept -> base::WindowInput&;
+        [[nodiscard]] auto  window() const noexcept -> base::Window&;
+        [[nodiscard]] auto context() const noexcept -> base::WindowContext&;
+        [[nodiscard]] auto  events() const noexcept -> base::WindowEvents&;
+        [[nodiscard]] auto   input() const noexcept -> base::WindowInput&;
 
     private:
         std::unique_ptr<base::Window>        _window;
