@@ -13,7 +13,8 @@ namespace core
         {
             return _changes.begin();
         }
-        [[nodiscard]] auto   end() const noexcept
+
+        [[nodiscard]] auto end() const noexcept
         {
             return _changes.end();
         }
