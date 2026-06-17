@@ -4,7 +4,7 @@ namespace windows
 {
     auto PlatformFunctions::init() noexcept -> void
     {
-        SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2); // TODO move this inside the window??
+        SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2); // TODO move this inside the window?
     }
 
     auto PlatformFunctions::init_context_functions() noexcept -> void
