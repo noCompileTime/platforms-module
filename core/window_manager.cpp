@@ -35,6 +35,11 @@ namespace core
         _events->update();
     }
 
+    auto WindowManager::window() const noexcept -> base::Window&
+    {
+        return *_window;
+    }
+
     auto WindowManager::context() const noexcept -> base::WindowContext&
     {
         return *_context;
@@ -48,10 +53,5 @@ namespace core
     auto WindowManager::input() const noexcept -> base::WindowInput&
     {
         return *_input;
-    }
-
-    auto WindowManager::window() const noexcept -> base::Window&
-    {
-        return *_window;
     }
 }
