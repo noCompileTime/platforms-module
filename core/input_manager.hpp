@@ -8,10 +8,10 @@ namespace core
     class InputManager
     {
     public:
+        auto  update() noexcept -> void;
+
         auto actions() noexcept -> InputActions&;
         auto   state() noexcept -> InputState&;
-
-        auto  update() noexcept -> void;
 
     private:
         InputActions _actions;
