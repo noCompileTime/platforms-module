@@ -5,7 +5,7 @@ namespace core
     class WindowManager
     {
     public:
-        WindowManager() = default;
+        WindowManager() = default; // TODO move it at the end of public
 
         auto init(const std::unique_ptr<base::PlatformFactory>& factory, const window::settings& settings) noexcept -> void;
 
