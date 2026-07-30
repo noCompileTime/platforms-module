@@ -121,10 +121,11 @@ namespace windows
                     window_events->callbacks.on_close();
                 }
 
-                break;
+                return 0;
             }
             case WM_SIZE:
-            {// TODO put static_cast<WindowEvents*>(GetProp(hwnd, events_key) inside some function inside the WindowEvents? do the same for input?
+            {
+                // TODO put static_cast<WindowEvents*>(GetProp(hwnd, events_key) inside some function inside the WindowEvents? do the same for input?
                 if (const auto window_events = static_cast<WindowEvents*>(GetProp(hwnd, events_key));
                                window_events && window_events->callbacks.on_resize)
                 {
