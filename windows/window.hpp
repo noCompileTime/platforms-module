@@ -11,7 +11,7 @@ namespace windows
         auto title(std::string_view title) const noexcept -> void override;
         auto  show()                       const noexcept -> void override;
 
-        [[nodiscard]] auto handle() const noexcept -> std::any override;
+        [[nodiscard]]  auto handle() const noexcept -> std::any override;
 
     private:
         auto   register_class()       noexcept -> void;
