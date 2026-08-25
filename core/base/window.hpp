@@ -2,7 +2,7 @@
 
 namespace core::base
 {
-    class Window
+    class Window // TODO this should have a handle as member?? with the type froma template parameter?
     {
     public:
                  Window() = default;
